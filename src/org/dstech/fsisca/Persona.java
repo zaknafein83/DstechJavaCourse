@@ -10,24 +10,13 @@
  * total_hours_wasted_here: 10
  * 
  */
-package org.dstech.corso;
+package org.dstech.fsisca;
 
 /**
  * @author franksisca
  *
  */
-public class Condomino implements Animale, Persona {
+public interface Persona {
 
-	private String nome;
-
-	public String getNome() {
-		return nome;
-	}
-
-	/**
- * 
- */
-	public Condomino(String nome) {
-		this.nome = nome;
-	}
+	String getNome();
 }

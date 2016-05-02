@@ -10,7 +10,7 @@
  * total_hours_wasted_here: 10
  * 
  */
-package org.dstech.corso;
+package org.dstech.fsisca;
 
 /**
  * @author franksisca

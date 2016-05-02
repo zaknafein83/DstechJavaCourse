@@ -10,13 +10,24 @@
  * total_hours_wasted_here: 10
  * 
  */
-package org.dstech.corso;
+package org.dstech.fsisca;
 
 /**
  * @author franksisca
  *
  */
-public interface Animale {
-	
-	String getNome();
+public class Condomino implements Animale, Persona {
+
+	private String nome;
+
+	public String getNome() {
+		return nome;
+	}
+
+	/**
+ * 
+ */
+	public Condomino(String nome) {
+		this.nome = nome;
+	}
 }
