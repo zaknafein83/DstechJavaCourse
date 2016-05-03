@@ -16,7 +16,7 @@ public class MainPattern {
 		String input= inputtast.nextLine(); 
 		System.out.println("Hai inserito la stringa "+input);
 		
-//		String inputRisposta= inputtast.nextLine();
+       
 		String telefono   = "\\d{3} \\d{3} \\d{4}";
 		String telefono2 ="\\d{10}";
 		String email = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
@@ -34,19 +34,17 @@ public class MainPattern {
 			System.out.println("Non è ne un telefono ne una stringa");
 		}
 		
-		System.out.println("Vuoi inserire un' altra stringa? S o N");
+		System.out.println("Vuoi inserire un' altra stringa? SI o NO");
+		
 		
 		input= inputtast.nextLine();
 		
-		String risp = "s|S";
+		String risp = "SI";
 		if (input.matches(risp))
 				{
 			risposta=true;
 				}
-		else
-		{
-			risposta=false;
-		}
+		
 			} while (risposta);
 	}		
 }
