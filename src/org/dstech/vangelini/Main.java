@@ -1,4 +1,5 @@
-package org.dstech.fsisca.ValerioAngelini;
+package org.dstech.vangelini;
+
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
