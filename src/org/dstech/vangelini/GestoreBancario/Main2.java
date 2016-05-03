@@ -1,4 +1,4 @@
-package org.dstech.vangelini;
+package org.dstech.vangelini.GestoreBancario;
 
 import java.util.Scanner;
 

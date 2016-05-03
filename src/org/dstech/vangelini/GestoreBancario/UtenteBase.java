@@ -1,4 +1,4 @@
-package org.dstech.vangelini;
+package org.dstech.vangelini.GestoreBancario;
 
 import java.util.ArrayList;
 
@@ -7,6 +7,10 @@ public class UtenteBase extends OperazioniUtente{
 	private double saldo;
 	private ArrayList<Muovimenti> muovimenti;
 	
+	public boolean addMovimento (Muovimenti muovimenti){
+		this.muovimenti.add(muovimenti);
+		return true;
+	}
 	public UtenteBase(Integer id, double saldo) {
 		this.id = id;
 		this.saldo = saldo;
