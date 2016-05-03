@@ -1,10 +1,19 @@
 package org.dstech.vangelini.Agenda;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Date;
+
+import org.dstech.vangelini.Agenda.LetturaSalvataggioFile;
 
 public class AgendaMain {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException, IOException {
+		
+		LetturaSalvataggioFile file = new LetturaSalvataggioFile();
+		file.leggiFile("agendina.jjj");
+		file.salvaFile("/Utenti/Valerio/git/DStechJavaCourse/src/org/dstech/vangelini/Agenda/agendina.jjj");
+		
 		//Creazione oggetto data da inserire come attributo
 		@SuppressWarnings("deprecation")
 		Date data = new Date(2016, 02, 12);
