@@ -2,21 +2,20 @@ package org.dstech.vangelini;
 
 import java.util.ArrayList;
 
-public abstract class Operazioni implements Utente{
-	
-	public void StampaSaldo(UtenteBase utente){
+public abstract class Operazioni implements Utente {
+
+	public void stampaSaldo(UtenteBase utente) {
 		double saldo = utente.getSaldo();
-		System.out.println("Il saldo è: "+saldo);
+		System.out.println("Il saldo è: " + saldo);
 	}
-	
-	public void ListaMuovimenti(UtenteBase utente){
+
+	public void listaMuovimenti(UtenteBase utente) {
 		ArrayList<Muovimenti> muovimenti = utente.getMuovimenti();
-		int i = 0;
-		System.out.println("Utente: "+utente.getId());
-		for(Muovimenti muovimento : muovimenti){
-			i++;
-			System.out.println(i+" "+muovimento.getAzione()+" denaro: "+muovimento.getDenaro());
+		System.out.println("Utente: " + utente.getId());
+		for (int i = 0; i < muovimenti.size(); i++) {
+			Muovimenti muovimento = muovimenti.get(i);
+			System.out.println(i + " " + muovimento.getAzione() + " denaro: " + muovimento.getDenaro());
 		}
 	}
-	
+
 }

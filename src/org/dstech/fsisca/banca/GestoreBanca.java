@@ -21,7 +21,7 @@ import java.util.Set;
  * @author franksisca
  *
  */
-public class GestoreBAnca {
+public class GestoreBanca {
 
 	public static void main(String[] args) throws IOException {
 		UtenteBase antonio = new UtenteBase("antonio", 1500);
