@@ -2,7 +2,7 @@ Creare all'interno del proprio package un sottopackage agendina
 
 - l'agendina deve contenere una lista di persone
 - ogni persona deve avere un 
-	* nome 8solo stringa)
+	* nome (solo stringa)
 	* cognome (solo stringa)
 	* eta (solo interi)
 	* numero di telefono valido (+39 338 1234567 | +39 3381234567 | 3381234567 | +39 338 123 4567)  
@@ -14,7 +14,7 @@ Realizzare un main che ci permetta di:
 - visualizzare la lista delle persone in agenda
 - modificare una informazion di una persona
 - rimuovere una persona
-- fare ricerca per numero di telefono, o per ordine alfabetico
+- fare ricerca per numero di telefono, o per nome
 - stampare la lista degli utenti in ordine alfabetico per nome o per cognome
 - salvare le modifiche effettuate
 
