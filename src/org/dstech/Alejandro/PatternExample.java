@@ -1,4 +1,4 @@
-package org.dstech.fsisca.Alejandro;
+package org.dstech.Alejandro;
 
 import java.util.Scanner;
 import java.util.regex.Matcher;
