@@ -26,6 +26,8 @@ public class UtenteGenerico implements Persona {
 
 	public UtenteGenerico(String id) {
 		super();
+		
+	
 		this.id = id;
 	}
 
@@ -54,6 +56,7 @@ public class UtenteGenerico implements Persona {
 		}
 		fileWriter.flush();
 		fileWriter.close();
+
 	}
 
 	
