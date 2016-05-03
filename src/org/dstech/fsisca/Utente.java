@@ -17,7 +17,7 @@ package org.dstech.fsisca;
  *
  */
 public class Utente implements Animale, Comparable<Utente> {
-	
+	static String pippop ="ppp";
 	private String nome;
 	/* (non-Javadoc)
 	 * @see org.dstech.corso.Animale#getNome()
