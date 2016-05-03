@@ -7,8 +7,10 @@ import java.util.regex.Pattern;
 
 public class Main {
 
+	private static Scanner io;
+
 	public static void main(String[] args) {
-		Scanner io = new Scanner(System.in);
+		io = new Scanner(System.in);
 		System.out.print("Inserisci Stringa: ");
 		String stringaInserita = io.nextLine();
 		String prima_regola = "(^\\d{10}$)";
