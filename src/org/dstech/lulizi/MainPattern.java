@@ -12,7 +12,7 @@ public class MainPattern {
 		boolean risposta=false;
 		do{
 		Scanner inputtast= new Scanner(System.in);
-		System.out.println("Inserisci una stringa");
+		System.out.println("Inserisci una stringaff");
 		String input= inputtast.nextLine(); 
 		System.out.println("Hai inserito la stringa "+input);
 		
