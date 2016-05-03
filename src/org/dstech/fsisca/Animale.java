@@ -18,5 +18,5 @@ package org.dstech.fsisca;
  */
 public interface Animale {
 	
-	String getNome();
+	public String getNome();
 }

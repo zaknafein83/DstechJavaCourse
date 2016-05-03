@@ -22,6 +22,7 @@ public class UtenteBase extends UtenteGenerico implements AzioniConto{
 
 	public UtenteBase(String id, double saldoIniziale) {
 		super(id);
+		
 		this.saldo = saldoIniziale;
 	}
 
