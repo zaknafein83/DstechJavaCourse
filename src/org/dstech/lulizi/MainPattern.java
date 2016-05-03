@@ -43,6 +43,10 @@ public class MainPattern {
 				{
 			risposta=true;
 				}
+		else
+		{
+			risposta=false;
+		}
 			} while (risposta);
 	}		
 }
