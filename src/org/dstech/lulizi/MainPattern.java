@@ -34,7 +34,7 @@ public class MainPattern {
 			System.out.println("Non è ne un telefono ne una stringa");
 		}
 		
-		System.out.println("Vuoi inserire un altra stringa? S o N");
+		System.out.println("Vuoi inserire un' altra stringa? S o N");
 		
 		input= inputtast.nextLine();
 		
