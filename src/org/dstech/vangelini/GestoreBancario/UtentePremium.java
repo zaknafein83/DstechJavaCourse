@@ -1,4 +1,4 @@
-package org.dstech.vangelini;
+package org.dstech.vangelini.GestoreBancario;
 
 public class UtentePremium extends UtenteBase{
 	private double fido;
