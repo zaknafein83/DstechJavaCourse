@@ -1,4 +1,4 @@
-package org.dstech.Alejandro;
+package org.dstech.alejandro;
 
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -20,13 +20,13 @@ public class PatternExample {
 		@SuppressWarnings("resource")
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Inserisci il tuo telefono o la tua mail");
-		String testo = scan.nextLine();
+		String text = scan.nextLine();
 
 		Pattern pattern = Pattern.compile(NUM_TEL);
-		Matcher matcher = pattern.matcher(testo);
+		Matcher matcher = pattern.matcher(text);
 
 		Pattern pattern2 = Pattern.compile(EMAIL);
-		Matcher matcher2 = pattern2.matcher(testo);
+		Matcher matcher2 = pattern2.matcher(text);
 
 		if (matcher.find())
 			System.out.println("Hai inserito un telefono)");
