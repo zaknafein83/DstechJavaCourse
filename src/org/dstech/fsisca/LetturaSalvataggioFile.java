@@ -18,6 +18,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Hashtable;
 
 /**
  * @author franksisca
@@ -27,7 +28,7 @@ public class LetturaSalvataggioFile {
 
 	public static void main(String[] args) throws IOException {
 		leggiFile("esempio.txt");
-		salvaFile("/Users/franksisca/Documents/DStech/salvataggio.txt");
+		salvaFile("salvataggio.txt");
 
 	}
 
