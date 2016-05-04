@@ -101,22 +101,22 @@ public class Agenda {
 			i++;
 			System.out.println(i+" - "+persona);
 		}
-		Scanner io = new Scanner(System.in);
+		Scanner io2 = new Scanner(System.in);
 		boolean notInt = true;
 		int index = 0;
 		while(notInt){
 			System.out.println("Inserisci posizione della persona: ");
 			try{
-				index = io.nextInt();
+				index = io2.nextInt();
 				notInt = false;
 			} catch(InputMismatchException exp){
 				notInt = true;
 				System.out.println("Non valido, Riprova");
 			}
-			io.nextLine();
+			io2.nextLine();
 		}
-		io.close();
-		Persona persona = listaPersone.get(index);
+		io2.close();
+		Persona persona = listaPersone.get(--index);
 		return persona;
 	}
 	
