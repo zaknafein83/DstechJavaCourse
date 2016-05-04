@@ -18,6 +18,9 @@ public class Main {
 	 */
 	public static void showMenu() {
 		// TODO Auto-generated method stub
+		System.out.println("################################");
+		System.out.println("M E N U :");
+		System.out.println("################################");
 		System.out.println("0 - Esci");
 		System.out.println("1 - Aggiungi un contatto");
 		System.out.println("2 - Stampa lista dei contatti");
@@ -27,46 +30,54 @@ public class Main {
 		System.out.println("6 - Ricerca per telefono");
 		System.out.println("7 - Stampa la lista dei contatti in ordine alfabetico");
 		System.out.println("8 - Salva lista");
-		
+		System.out.println("################################");
+
 	}
 
 	public static void menu() throws IOException {
+		int choice = 9;
 		Scanner scanner = new Scanner(System.in);
-		while (true)
-			try {
+
+		try {
+			while (choice != 0) {
 				showMenu();
-				int nextInt = Integer.parseInt(scanner.next());
-				while (nextInt != 0) {
-					showMenu();
-					nextInt = scanner.nextInt();
-					switch (nextInt) {
-					case 1:
-						Agendina.addPersona();
-					case 2:
-						Agendina.stampListPersone();
-					case 3:
-						Agendina.modifica();
-					case 4:
-						Agendina.removePersona();
-					case 5:
-						Agendina.searchForNome();
-					case 6:
-						Agendina.searchForTelefono();
-					case 7:
-						Agendina.stampListPersoneAlpha();
-					case 8:
-						Agendina.salvaAgendina();;
-					
-
-					}
+				choice = scanner.nextInt();
+				switch (choice) {
+				case 1:
+					Agendina.addPersona();
+					break;
+				case 2:
+					Agendina.stampListPersone();
+					break;
+				case 3:
+					Agendina.modifica();
+					break;
+				case 4:
+					Agendina.removePersona();
+					break;
+				case 5:
+					Agendina.searchForNome();
+					break;
+				case 6:
+					Agendina.searchForTelefono();
+					break;
+				case 7:
+					Agendina.stampListPersoneAlpha();
+					break;
+				case 8:
+					Agendina.salvaAgendina();
+					break;
 				}
-			} catch (InputMismatchException exp) {
-				System.out.println("Only int");
-
-			} catch (NumberFormatException exp) {
-				System.out.println("Only int");
 
 			}
+		} catch (InputMismatchException exp) {
+			System.out.println("Only int");
+
+		} catch (NumberFormatException exp) {
+			System.out.println("Only int");
+
+		}
+		
 	}
 
 }

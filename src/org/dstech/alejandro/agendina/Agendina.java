@@ -12,16 +12,26 @@ import java.util.Collections;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Agendina implements Serializable {
-	/**
-	 * 
+	/**(+39 338 1234567 | +39 3381234567 | 3381234567 | +39 338 123 4567)
+	 * (\+\\d{2,3}
 	 */
 	private static final long serialVersionUID = 1L;
 	private static List<Persona> listaPersone = new ArrayList<Persona>();
-	private static final String NUM_TEL = "+*\\d{2} \\d{3} \\d{7}|+*\\d{2} \\d{10}|\\d{10}|+*\\d{2} \\d{3} \\d{3} \\d{4}";
-	private static final String EMAIL = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
-			+ "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+	private static final String NUM_TEL = "[+]\\d{2}[\\s]\\d{3}[\\s]\\d{7}|[+]\\d{2}[\\s]\\d{10}|\\d{10}|[+]\\d{2}[\\s]\\d{3}[\\s]\\d{3}[\\s]\\d{4}";
+	private static final String EMAIL = "\\w\\w\\w[@]\\w\\w[.]\\w\\w";
+
+	private static boolean telefonoCheck(String telefono) {
+		Pattern pattern = Pattern.compile(NUM_TEL);
+		Matcher matcher = pattern.matcher(telefono);
+		if (matcher.find()) {
+			return true;
+		}
+		return false;
+	}
 
 	public static void addPersona() {
 
@@ -36,11 +46,20 @@ public class Agendina implements Serializable {
 		p.setEta(scanner.nextInt());
 		scanner.nextLine();
 		System.out.println("Inserisci il telefono");
-		p.setTelefono(scanner.nextLine());
+		while(true){
+			String telefono = scanner.nextLine();
+			if(telefonoCheck(telefono)){
+				p.setTelefono(telefono);
+				System.out.println("Formato giusto");
+				break;
+			}
+			System.out.println("Fromato sbagliato,riprova");
+		}
 		System.out.println("Inserisci il email");
 		p.setEmail(scanner.nextLine());
 
 		listaPersone.add(p);
+		stampListPersone();
 	}
 
 	public static void stampListPersone() {
@@ -57,38 +76,42 @@ public class Agendina implements Serializable {
 		String s = scanner.nextLine();
 		for (Persona p : listaPersone)
 			if (p.getNome() == s)
-				while (true)
-					try {
+				try {
+					System.out.println("Premi 0 per uscire o premi un numero per andare al menu modifica");
+					int nextInt = scanner.nextInt();
+					while (nextInt != 0) {
 						showMenuModifica();
-						int nextInt = Integer.parseInt(scanner.next());
-						while (nextInt != 9) {
-							showMenuModifica();
-							nextInt = scanner.nextInt();
-							switch (nextInt) {
-							case 1:
-								System.out.println("Aggiorna il nome");
-								p.setNome(scanner.nextLine());
-							case 2:
-								System.out.println("Aggiorna il cognome");
-								p.setCognome(scanner.nextLine());
-							case 3:
-								System.out.println("Aggiorna l'età");
-								p.setEta(scanner.nextInt());
-							case 4:
-								System.out.println("Aggiorna il telefono");
-								p.setTelefono(scanner.nextLine());
-							case 5:
-								System.out.println("Aggiorna l'email");
-								p.setEmail(scanner.nextLine());
-							}
+						nextInt = scanner.nextInt();
+						switch (nextInt) {
+						case 1:
+							System.out.println("Aggiorna il nome");
+							p.setNome(scanner.nextLine());
+							break;
+						case 2:
+							System.out.println("Aggiorna il cognome");
+							p.setCognome(scanner.nextLine());
+							break;
+						case 3:
+							System.out.println("Aggiorna l'età");
+							p.setEta(scanner.nextInt());
+							break;
+						case 4:
+							System.out.println("Aggiorna il telefono");
+							p.setTelefono(scanner.nextLine());
+							break;
+						case 5:
+							System.out.println("Aggiorna l'email");
+							p.setEmail(scanner.nextLine());
+							break;
 						}
-					} catch (InputMismatchException exp) {
-						System.out.println("Only int");
-
-					} catch (NumberFormatException exp) {
-						System.out.println("Only int");
-
 					}
+				} catch (InputMismatchException exp) {
+					System.out.println("Only int");
+
+				} catch (NumberFormatException exp) {
+					System.out.println("Only int");
+
+				}
 	}
 
 	public static void removePersona() {
@@ -174,8 +197,10 @@ public class Agendina implements Serializable {
 	}
 
 	private static void showMenuModifica() {
+		System.out.println("################################");
 		System.out.println("Menu modifica :");
 		System.out.println("################################");
+		System.out.println("0 - Esci");
 		System.out.println("1 - Modifica nome");
 		System.out.println("2 - Modifica cognome");
 		System.out.println("3 - Modifica età");
