@@ -1,6 +1,9 @@
 package org.dstech.vangelini.Agenda;
 
-public class Persona {
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class Persona implements Serializable{
 	private String nome;
 	private String cognome;
 	private Integer eta;

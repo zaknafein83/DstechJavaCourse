@@ -72,7 +72,7 @@ public class Agenda {
 	
 	public Persona ricercaPerNumeroTelefonico(String telefono_ricercato){
 		for(Persona persona : listaPersone){
-			if(persona.getNumero_telefono() == telefono_ricercato){
+			if(telefono_ricercato.equals(persona.getNumero_telefono())){
 				return persona;
 			}
 		}
@@ -82,7 +82,7 @@ public class Agenda {
 	public ArrayList<Persona> ricercaPerOrdineAlfabetico(String nome){
 		ArrayList<Persona> listaPersoneRicercate = new ArrayList<Persona>();
 		for(Persona persona : listaPersone){
-			if(persona.getNome() == nome){
+			if(nome.equals(persona.getNome())){
 				listaPersoneRicercate.add(persona);
 			}
 		}
@@ -101,6 +101,7 @@ public class Agenda {
 			i++;
 			System.out.println(i+" - "+persona);
 		}
+		@SuppressWarnings("resource")
 		Scanner io2 = new Scanner(System.in);
 		boolean notInt = true;
 		int index = 0;
@@ -115,7 +116,7 @@ public class Agenda {
 			}
 			io2.nextLine();
 		}
-		io2.close();
+		//io2.close();
 		Persona persona = listaPersone.get(--index);
 		return persona;
 	}
