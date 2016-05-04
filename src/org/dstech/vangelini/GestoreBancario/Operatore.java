@@ -22,7 +22,9 @@ public class Operatore extends Operazioni{
 	public void StampaUtenti(String url) throws IOException{
 		//System.out.println("Utente: "+utente.getId());
 		File file = new File(url);
-		//FileWriter file_writer = new FileWriter(file);
+		
+		@SuppressWarnings({ "unused", "resource" })
+		FileWriter file_writer = new FileWriter(file);
 		
 	}
 }

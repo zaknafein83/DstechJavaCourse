@@ -101,6 +101,7 @@ public class Agenda {
 			i++;
 			System.out.println(i+" - "+persona);
 		}
+		@SuppressWarnings("resource")
 		Scanner io2 = new Scanner(System.in);
 		boolean notInt = true;
 		int index = 0;
