@@ -22,7 +22,10 @@ public class Agendina {
 	}
 
 	public void stampListPersone() {
-		System.out.println(listaPersone);
+		List<String> nomi = new ArrayList<String>();
+		for(Persona p: listaPersone)
+			nomi.add(p.getNome()+" "+p.getCognome());
+		System.out.println(nomi);
 	}
 	
 //	public void modifica(Persona p){
