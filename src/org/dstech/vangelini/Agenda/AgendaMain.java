@@ -151,6 +151,7 @@ public class AgendaMain {
 			Agenda agenda, Scanner io) throws IOException {
 		Persona persona_selezionata_per_modifica = agenda.personaRicercata();
 		int risposta_nuova_modifica = 0;
+		@SuppressWarnings("resource")
 		Scanner io3 = new Scanner(System.in);
 		do{
 			int risposta_nuova = 0;

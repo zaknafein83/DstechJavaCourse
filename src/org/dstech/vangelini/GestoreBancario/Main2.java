@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Main2 {
 
 	public static void main(String[] args) {
-		Operatore operatore_uno = new Operatore(1);
+		/*Operatore operatore_uno = new Operatore(1);
 		Operatore operatore_due = new Operatore(2);
 		Operatore operatore_terzo = new Operatore(3);
 		
@@ -15,7 +15,7 @@ public class Main2 {
 		
 		UtentePremium utente_premium_uno = new UtentePremium(7, 30000, 2000);
 		UtentePremium utente_premium_due = new UtentePremium(8, 21000, 2000);
-		UtentePremium utente_premium_tre = new UtentePremium(9, 45000, 3000);
+		UtentePremium utente_premium_tre = new UtentePremium(9, 45000, 3000);*/
 		
 		int prima_risposta = 0;
 		Scanner io = new Scanner(System.in);
@@ -23,8 +23,8 @@ public class Main2 {
 			System.out.println("Identificati, Sei un Cliente(1) o un Operatore(2):");
 			prima_risposta = io.nextInt();
 		} while(!(prima_risposta == 1 || prima_risposta == 2));
-		
-		int flag = 0;
+		io.close();
+		//int flag = 0;
 	}
 	
 }
