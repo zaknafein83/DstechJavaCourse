@@ -1,10 +1,14 @@
 package org.dstech.alejandro.agendina;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception, IOException {
 		// TODO Auto-generated method stub
-
+		Agendina.leggiAgendina();
+		
 		Persona persona = new Persona();
 		persona.setNome("Alejandro");
 		persona.setCognome("BlaBlaBla");
@@ -37,6 +41,7 @@ public class Main {
 		System.out.println(agendina.searchForTelefono("+3400898830"));
 		System.out.println(agendina.searchForNome("Claudio"));
 		agendina.stampListPersoneAlpha("nome");
+		Agendina.salvaAgendina();
 
 	}
 

@@ -2,10 +2,14 @@ package org.dstech.alejandro.agendina;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -72,31 +76,29 @@ public class Agendina {
 		}
 	}
 
-	private static void salvaAgendina() throws IOException {
-		File file = new File("agendina.txt");
-		FileWriter fileWriter = new FileWriter(file);
-		fileWriter.append((CharSequence) listaPersone);
-		fileWriter.flush();
-		fileWriter.close();
+	public static void salvaAgendina() throws IOException {
+		try{
+		FileOutputStream file = new FileOutputStream("C:\\Users\\Alejandro\\git\\DstechJavaCourse\\src\\org\\dstech\\alejandro\\agendina\\agendina.jjj");
+		ObjectOutputStream ob = new ObjectOutputStream(file);
+		for(Persona p : listaPersone)
+			ob.writeObject(p);
+		ob.close();
+		System.out.println("Lista salvata con successo");
+		}catch(Exception ex){
+			ex.printStackTrace();
+		}
 	}
 
-	private static void leggiAgendina() throws FileNotFoundException, IOException {
+	public static void leggiAgendina() throws FileNotFoundException, IOException, ClassNotFoundException {
 		try {
-			File file = new File("agendina.txt");
-			FileReader in = new FileReader(file);
-			BufferedReader buffereReader = new BufferedReader(in);
-			String readLine = buffereReader.readLine();
-			while (readLine != null) {
-				System.out.println(readLine);
-				readLine = buffereReader.readLine();
-			}
-			buffereReader.close();
+			
+			FileInputStream file = new FileInputStream("C:\\Users\\Alejandro\\git\\DstechJavaCourse\\src\\org\\dstech\\alejandro\\agendina\\agendina.jjj");
+			ObjectInputStream ob = new ObjectInputStream(file);
+			Persona persona = (Persona) ob.readObject();
 		} catch (FileNotFoundException exc) {
 			System.out.println(exc);
-			File file = new File("agendina.txt");
-			FileWriter fileWriter = new FileWriter(file);
-			fileWriter.close();
-			System.out.println("agendina.txt ora è stata creata");
+			FileOutputStream file = new FileOutputStream("C:\\Users\\Alejandro\\git\\DstechJavaCourse\\src\\org\\dstech\\alejandro\\agendina\\agendina.jjj");
+			System.out.println("agendina.jjj ora è stata creata");
 		}
 	}
 }

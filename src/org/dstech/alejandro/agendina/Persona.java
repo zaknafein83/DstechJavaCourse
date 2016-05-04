@@ -1,8 +1,9 @@
 package org.dstech.alejandro.agendina;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Persona {
+public class Persona implements Serializable{
 	private String nome;
 	private String cognome;
 	private int eta;
