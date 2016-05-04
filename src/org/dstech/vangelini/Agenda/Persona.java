@@ -1,16 +1,14 @@
 package org.dstech.vangelini.Agenda;
 
-import java.util.Date;
-
 public class Persona {
 	private String nome;
 	private String cognome;
 	private Integer eta;
 	private String numero_telefono = "Non Impostato";
 	private String email = "Non Impostata";
-	private Date data;
+	private String data;
 	
-	public Persona(String nome, String cognome, Integer eta, String numero_telefono, String email, Date data) {
+	public Persona(String nome, String cognome, Integer eta, String numero_telefono, String email, String data) {
 		this.nome = nome;
 		this.cognome = cognome;
 		this.eta = eta;
@@ -51,10 +49,10 @@ public class Persona {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public Date getData() {
+	public String getData() {
 		return data;
 	}
-	public void setData(Date data) {
+	public void setData(String data) {
 		this.data = data;
 	}
 	
@@ -62,14 +60,14 @@ public class Persona {
 	public String toString() {
 		return "Nome: " + nome + ", Cognome: " + cognome + ", eta: "
 				+ eta + ", Numero Telefonico: " + numero_telefono + ", email: "
-				+ email + ", Data di aggiunta alla rubrica:" + data + "]";
+				+ email + ", Data di aggiunta alla rubrica:" + data + ".";
 	}
 	
 	public String toStringFile() {
 		return (nome + "," + cognome + "," + eta + "," + numero_telefono + "," + email + "," + data);
 	}
 	
-	public boolean modificaPersona(String nome, String cognome, Integer eta, String numero_telefono, String email, Date data){
+	public boolean modificaPersona(String nome, String cognome, Integer eta, String numero_telefono, String email, String data){
 		this.nome = nome;
 		this.cognome = cognome;
 		this.eta = eta;

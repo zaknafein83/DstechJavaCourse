@@ -2,6 +2,8 @@ package org.dstech.vangelini.Agenda;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.InputMismatchException;
@@ -15,13 +17,14 @@ public class AgendaMain {
 		//agenda start
 		System.out.println("Caricamento Agenda in corso...");
 		LetturaSalvataggioFile file = new LetturaSalvataggioFile();
-		Agenda agenda = new Agenda();
+		Agenda agenda = null;
 		try{
-			file.leggiFile(agenda, "agendina.jjj");
+			agenda = file.leggiFile("agendina.jjj");
 			System.out.println("Agenda caricata.");
 		} catch (Exception e){
 			file.creaFile("agendina.jjj");
 			System.out.println("Nessuna agenda trovata, è stato creato un nuovo file agendina.jjj");
+			agenda = new Agenda();
 		}
 		
 		
@@ -64,7 +67,7 @@ public class AgendaMain {
 					while(notStringNome){
 						System.out.println("Inserisci Nome: ");
 						try{
-							nome = io.nextLine();
+							nome = io.next();
 							notStringNome = false;
 						} catch(InputMismatchException exp){
 							notStringNome = true;
@@ -81,7 +84,7 @@ public class AgendaMain {
 					while(notStringCognome){
 						System.out.println("Inserisci Cognome: ");
 						try{
-							cognome = io.nextLine();
+							cognome = io.next();
 							notStringCognome = false;
 						} catch(InputMismatchException exp){
 							notStringCognome = true;
@@ -115,7 +118,7 @@ public class AgendaMain {
 					while(notStringEmail){
 						System.out.println("Inserisci Email: ");
 						try{
-							email = io.nextLine();
+							email = io.next();
 							if(Agenda.controlloEmail(email)){
 								notStringEmail = false;
 							} else {
@@ -136,7 +139,7 @@ public class AgendaMain {
 					while(notStringTelefono){
 						System.out.println("Inserisci Telefono: ");
 						try{
-							tel = io.nextLine();
+							tel = io.next();
 							if(Agenda.controlloTel(tel)){
 								notStringTelefono = false;
 							} else {
@@ -153,7 +156,9 @@ public class AgendaMain {
 					
 					//Data Aggiunta alla rubrica
 					Date data = new Date();
-					persona.setData(data);
+					DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+			        String new_data = formatter.format(data);
+					persona.setData(new_data);
 					//
 					agenda.aggiungiPersona(persona);
 				break;
@@ -167,6 +172,7 @@ public class AgendaMain {
 					Persona persona_selezionata_per_modifica = agenda.personaRicercata();
 					int risposta_nuova_modifica = 0;
 					do{
+						int risposta_nuova = 0;
 						System.out.println("Cosa vuoi modificare del contatto con nome: "+persona_selezionata_per_modifica.getNome()+" e cognome: "+persona_selezionata_per_modifica.getCognome()+"?");
 						System.out.println("1 - Nome");
 						System.out.println("2 - Cognome");
@@ -179,21 +185,21 @@ public class AgendaMain {
 						while(notIntRisposta){
 							System.out.println("Inserisci numero operazione da effettuare: ");
 							try{
-								risposta = io.nextInt();
-								notInt = false;
-							} catch(InputMismatchException exp){
-								notInt = true;
+								risposta_nuova = io.nextInt();
+								notIntRisposta = false;
+							} catch(Exception exp){
+								notIntRisposta = true;
 							}
 							io.nextLine();
 						}		
-						switch(risposta){
+						switch(risposta_nuova){
 							case 1:
 								boolean notStringNomeDaModificare = true;
 								String nomeDaModificare = persona_selezionata_per_modifica.getNome();
 								while(notStringNomeDaModificare){
 									System.out.println("Inserisci Nuovo Nome: ");
 									try{
-										nomeDaModificare = io.nextLine();
+										nomeDaModificare = io.next();
 										notStringNomeDaModificare = false;
 									} catch(InputMismatchException exp){
 										notStringNomeDaModificare = true;
@@ -209,7 +215,7 @@ public class AgendaMain {
 								while(notStringCognomeDaModificare){
 									System.out.println("Inserisci Nuovo Cognome: ");
 									try{
-										cognomeDaModificare = io.nextLine();
+										cognomeDaModificare = io.next();
 										notStringCognomeDaModificare = false;
 									} catch(InputMismatchException exp){
 										notStringCognomeDaModificare = true;
@@ -242,7 +248,7 @@ public class AgendaMain {
 								while(notStringEmailDaModificare){
 									System.out.println("Inserisci Nuova Email: ");
 									try{
-										emailDaModificare = io.nextLine();
+										emailDaModificare = io.next();
 										if(Agenda.controlloEmail(emailDaModificare)){
 											notStringEmailDaModificare = false;
 										} else {
@@ -262,7 +268,7 @@ public class AgendaMain {
 								while(notStringTelefonoDaModificare){
 									System.out.println("Inserisci Nuovo Telefono: ");
 									try{
-										tel = io.nextLine();
+										tel = io.next();
 										if(Agenda.controlloTel(tel)){
 											notStringTelefonoDaModificare = false;
 										} else {
@@ -297,7 +303,7 @@ public class AgendaMain {
 					while(notStringTelefonoRicercato){
 						System.out.println("Inserisci Telefono: ");
 						try{
-							tel = io.nextLine();
+							tel = io.next();
 							if(Agenda.controlloTel(tel)){
 								notStringTelefonoRicercato = false;
 							} else {
@@ -319,7 +325,7 @@ public class AgendaMain {
 					while(notStringContattoRicercato){
 						System.out.println("Inserisci Nome da trovare: ");
 						try{
-							contatto_ricercato = io.nextLine();
+							contatto_ricercato = io.next();
 							notStringTelefonoRicercato = false;
 						} catch(InputMismatchException exp){
 							notStringContattoRicercato = true;

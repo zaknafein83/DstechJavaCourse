@@ -1,8 +1,13 @@
 package org.dstech.alejandro.agendina;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Persona {
+public class Persona implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String nome;
 	private String cognome;
 	private int eta;

@@ -6,6 +6,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -31,12 +33,13 @@ public class LetturaSalvataggioFile {
 		fileWriter.close();
 	}	
 	
-	public void leggiFile(Agenda agenda, String fileUrl) throws FileNotFoundException, IOException {
+	public Agenda leggiFile(String fileUrl) throws FileNotFoundException, IOException {
+		Agenda agenda = new Agenda();
+		
 		File file = new File(fileUrl);
 		FileReader in = new FileReader(file);
 		BufferedReader buffereReader = new BufferedReader(in);
 		String readLine = buffereReader.readLine();
-		ArrayList<Persona> lista = agenda.getListaPersone();
 		while (readLine != null) {
 			//System.out.println(readLine);
 			Persona persona = new Persona();
@@ -55,11 +58,14 @@ public class LetturaSalvataggioFile {
 			persona.setEmail(split[4]);
 			@SuppressWarnings("deprecation")
 			Date data = new Date(split[5]);
-			persona.setData(data);
+			DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        	String new_data = formatter.format(data);
+        	persona.setData(new_data);
+			agenda.aggiungiPersona(persona);
 			readLine = buffereReader.readLine();
 		}
-		agenda.setListaPersone(lista);
 		buffereReader.close();
+		return agenda;
 	}
 
 }
