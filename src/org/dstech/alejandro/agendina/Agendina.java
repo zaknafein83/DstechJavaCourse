@@ -182,12 +182,7 @@ public class Agendina implements Serializable {
 
 	public static void leggiAgendina() throws FileNotFoundException, IOException, ClassNotFoundException {
 		try {
-
-			FileInputStream file = new FileInputStream(
-					"C:\\Users\\Alejandro\\git\\DstechJavaCourse\\src\\org\\dstech\\alejandro\\agendina\\agendina.jjj");
-			ObjectInputStream ob = new ObjectInputStream(file);
-			Agendina agendina = (Agendina) ob.readObject();
-			listaPersone = (agendina.listaPersone);
+			listaPersone = (LetturaScritturaItemSerializable.recuperaListaOggetti("C:\\Users\\Alejandro\\git\\DstechJavaCourse\\src\\org\\dstech\\alejandro\\agendina\\agendina.jjj"));
 		} catch (FileNotFoundException exc) {
 			System.out.println(exc);
 			FileOutputStream file = new FileOutputStream(

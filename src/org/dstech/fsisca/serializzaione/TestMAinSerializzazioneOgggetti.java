@@ -16,6 +16,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.dstech.alejandro.agendina.LetturaScritturaItemSerializable;
+
 /**
  * @author franksisca
  *

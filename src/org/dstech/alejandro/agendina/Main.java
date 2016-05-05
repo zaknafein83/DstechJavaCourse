@@ -8,6 +8,7 @@ public class Main {
 
 	public static void main(String[] args) throws Exception, IOException {
 		// TODO Auto-generated method stub
+		final String PATH = "C:\\Users\\Alejandro\\git\\DstechJavaCourse\\src\\org\\dstech\\alejandro\\agendina\\agendina.jjj";
 		Agendina.leggiAgendina();
 		menu();
 
