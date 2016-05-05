@@ -64,7 +64,7 @@ public  void stampaListaStudenti( ){
 	    System.out.println();
 	    for (Docente doc : listaDocenti)
 	    {
-		System.out.println(doc.getNome()+" "+doc.getCognome()+" "+doc.getCodiceFiscale()+" "+doc.getDataDiNascita()+ " "+doc.getMatricola());
+		System.out.println("Nome :"+ doc.getNome()+" Cognome: "+doc.getCognome()+" Codice Fiscale: "+doc.getCodiceFiscale()+" Data di nascita: "+doc.getDataDiNascita()+ " Matricola: "+doc.getMatricola());
 	    }
 		System.out.println();
 		System.out.println();
@@ -73,7 +73,7 @@ public  void stampaListaStudenti( ){
 		
 		for (Studente stud : listaStudenti)
 	    {
-		System.out.println(stud.getNome()+" "+stud.getCognome()+" "+stud.getCodiceFiscale()+ " "+stud.getDataDiNascita()+ " "+stud.getMatricola());
+		System.out.println("Nome: "+stud.getNome()+" Cognome: "+stud.getCognome()+" Codice Fiscale: "+stud.getCodiceFiscale()+ " Data di nascita: "+stud.getDataDiNascita()+ " Matricola: "+stud.getMatricola());
 	    }
 		
 	}
