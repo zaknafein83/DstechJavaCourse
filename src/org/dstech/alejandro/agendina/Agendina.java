@@ -34,6 +34,15 @@ public class Agendina implements Serializable {
 		return false;
 	}
 
+	private static boolean emailCheck(String email) {
+		Pattern pattern = Pattern.compile(EMAIL);
+		Matcher matcher = pattern.matcher(email);
+		if (matcher.find()) {
+			return true;
+		}
+		return false;
+	}
+
 	public static void addPersona() {
 
 		Persona p = new Persona();
@@ -47,6 +56,7 @@ public class Agendina implements Serializable {
 		p.setEta(scanner.nextInt());
 		scanner.nextLine();
 		System.out.println("Inserisci il telefono");
+
 		while (true) {
 			String telefono = scanner.nextLine();
 			if (telefonoCheck(telefono)) {
@@ -57,10 +67,21 @@ public class Agendina implements Serializable {
 			System.out.println("Fromato sbagliato,riprova");
 		}
 		System.out.println("Inserisci il email");
-		p.setEmail(scanner.nextLine());
+
+		while (true) {
+			String email = scanner.nextLine();
+			if (emailCheck(email)) {
+				p.setTelefono(email);
+				System.out.println("Formato giusto");
+				break;
+			}
+			System.out.println("Fromato sbagliato,riprova");
+		}
 
 		listaPersone.add(p);
+
 		stampListPersone();
+
 	}
 
 	public static void stampListPersone() {
@@ -70,39 +91,43 @@ public class Agendina implements Serializable {
 		System.out.println(nomi);
 	}
 
-	public static void modifica() {
-
+	public static void modificaPersona() {
+		int choice = 10;
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Inserisci il nome del contatto da modificare");
 		String s = scanner.nextLine();
 		for (Persona p : listaPersone)
-			if (p.getNome() == s)
+			if (p.getNome().equals(s))
 				try {
-					System.out.println("Premi 0 per uscire o premi un numero per andare al menu modifica");
-					int nextInt = scanner.nextInt();
-					while (nextInt != 0) {
+
+					while (choice != 0) {
 						showMenuModifica();
-						nextInt = scanner.nextInt();
-						switch (nextInt) {
+						choice = scanner.nextInt();
+						switch (choice) {
 						case 1:
 							System.out.println("Aggiorna il nome");
-							p.setNome(scanner.nextLine());
+							String nome = scanner.nextLine();
+							p.setNome(nome);
 							break;
 						case 2:
 							System.out.println("Aggiorna il cognome");
-							p.setCognome(scanner.nextLine());
+							String cognome = scanner.nextLine();
+							p.setCognome(cognome);
 							break;
 						case 3:
 							System.out.println("Aggiorna l'età");
-							p.setEta(scanner.nextInt());
+							int eta = scanner.nextInt();
+							p.setEta(eta);
 							break;
 						case 4:
 							System.out.println("Aggiorna il telefono");
-							p.setTelefono(scanner.nextLine());
+							String telefono = scanner.nextLine();
+							p.setTelefono(telefono);
 							break;
 						case 5:
 							System.out.println("Aggiorna l'email");
-							p.setEmail(scanner.nextLine());
+							String email = scanner.nextLine();
+							p.setEmail(email);
 							break;
 						}
 					}
@@ -115,13 +140,15 @@ public class Agendina implements Serializable {
 				}
 	}
 
-	public static void removePersona() {
+	public static void removePersona() throws IOException {
 		System.out.println("Inserisci il nome della persona da rimuovere");
 		Scanner scanner = new Scanner(System.in);
 		String s = scanner.nextLine();
 		for (Persona p : listaPersone)
-			if (s == p.getNome())
+			if (s.equals(p.getNome())) {
 				listaPersone.remove(p);
+				System.out.println("rimosso con successo!");
+			}
 	}
 
 	public static void searchForTelefono() {
@@ -159,18 +186,22 @@ public class Agendina implements Serializable {
 				nomi.add(p.getNome());
 			Collections.sort(nomi, String.CASE_INSENSITIVE_ORDER);
 			System.out.println(nomi);
+			break;
 		case 2:
 			for (Persona p : listaPersone)
 				cognomi.add(p.getCognome());
 			Collections.sort(cognomi, String.CASE_INSENSITIVE_ORDER);
 			System.out.println(cognomi);
+			break;
 		}
 	}
 
 	public static void salvaAgendina() throws IOException {
 		Agendina agendina = new Agendina();
 		try {
-			LetturaScritturaItemSerializable.salvaListaOggetti("C:\\Users\\Alejandro\\git\\DstechJavaCourse\\src\\org\\dstech\\alejandro\\agendina\\agendina.jjj",listaPersone);
+			LetturaScritturaItemSerializable.salvaListaOggetti(
+					"C:\\Users\\Alejandro\\git\\DstechJavaCourse\\src\\org\\dstech\\alejandro\\agendina\\agendina.jjj",
+					listaPersone);
 			System.out.println("Agendina salvata con successo");
 		} catch (Exception ex) {
 			ex.printStackTrace();

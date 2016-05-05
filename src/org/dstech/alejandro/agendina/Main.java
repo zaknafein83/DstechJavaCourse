@@ -39,9 +39,9 @@ public class Main {
 		int choice = 9;
 		Scanner scanner = new Scanner(System.in);
 
-		try {
-			while (choice != 0) {
-				showMenu();
+		while (choice != 0) {
+			showMenu();
+			try {
 				choice = scanner.nextInt();
 				switch (choice) {
 				case 1:
@@ -51,7 +51,7 @@ public class Main {
 					Agendina.stampListPersone();
 					break;
 				case 3:
-					Agendina.modifica();
+					Agendina.modificaPersona();
 					break;
 				case 4:
 					Agendina.removePersona();
@@ -70,15 +70,15 @@ public class Main {
 					break;
 				}
 
+			} catch (InputMismatchException exp) {
+				System.out.println("Only int");
+
+			} catch (NumberFormatException exp) {
+				System.out.println("Only int");
+
 			}
-		} catch (InputMismatchException exp) {
-			System.out.println("Only int");
-
-		} catch (NumberFormatException exp) {
-			System.out.println("Only int");
-
 		}
-		
+
 	}
 
 }
