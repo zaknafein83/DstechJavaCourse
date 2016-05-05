@@ -1,58 +1,73 @@
 package org.dstech.smastro.agendina;
 
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
-import org.dstech.vangelini.Agenda.LetturaSalvataggioFile;
-import org.dstech.vangelini.Agenda.Persona;
+import org.dstech.fsisca.LetturaSalvataggioFile;
 
-public class Main {
+
+
+public class Main{
+
+	
+
 	public static void main(String args[]){
-		LetturaSalvataggioFile file = new LetturaSalvataggioFile();
-		file.leggiFile("agendina.jjj");
+		ArrayList<Persona>lista=new ArrayList<Persona>();
+	
 		
+	    int risp=0;
+		do{
+			
+		System.out.println("\n\n Menu Agenda");
+		System.out.println(" 1) : Visualizza l'intera agenda");
+		System.out.println(" 2) : Aggiunta di una persona");
+		System.out.println(" 3) : Ordinamento dell'agenda per cognome");
+		System.out.println(" 4) : Modifica di una persona");
+		System.out.println(" 5) : Rimozione di una persona");
+		System.out.println(" 6) : Ricerca di una persona per numero di telefono");
+		System.out.println(" 7) : Uscire dal programma");
 		
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Quale operazione vuoi effettuare?");
+		int n=sc.nextInt();
+
+	
+	switch(n){
+	case 1:
+			agenda.stampaAgenda();
 		
-		Persona p=new Persona();
-		p.setNome("Simone");
-		p.setCognome("Mastro");
-		p.setEta(20);
-		p.setTelefono("+39 388 4697 182");
-		p.setEmail("simonee1995@live.it");
+			break;
+	case 2:
+			agenda.AggiungiNuovaPersona();
+			break;
+	case 3:
+		   agenda. OrdinamentoPerCognome();
+		   break;
+	case 4:
+			agenda
+			break;
+	case 5:
+		   agenda.Rimuovi();
+		   break;
+	case 6:
+		   agenda.RicercaPerTelefono();
+		   break;
+	case 7:
+		   System.out.println("Uscita dal programma");
+	default:
+		   System.out.println("Errore");
+		   break;
+	}
+		 
+			System.out.println("Vuoi fare un'altra operazione? (S/N");
+		  }while(risp =='S');
+			
 		
-		Persona p1=new Persona();
-		p.setNome("Marco");
-		p.setCognome("Marin");
-		p.setEta(25);
-		p.setTelefono("+39 392 5789675");
-		p.setEmail("marin.m@hotmail.com");
-		
-		Persona p2=new Persona();
-		p.setNome("Giovanni");
-		p.setCognome("Fosco");
-		p.setEta(34);
-		p.setTelefono("3925789675");
-		p.setEmail("giova.fo@yahoo.it");
-		
-		Agenda agenda=new Agenda();
-		agenda.Aggiungi(p);
-		agenda.Aggiungi(p1);
-		agenda.Aggiungi(p2);
-		
-		agenda.StampaListaPersone();
-		agenda.Rimuovi(p1);
-		agenda.RicercaPerTelefono(numero);
-		agenda.OrdinamentoPerCognome();
-		
-		Persona cercaTelefono = new Persona();
-		cercaTelefono = agenda.RicercaPerTelefono("3925789675");
-		if(cercaTelefono != null){
-			System.out.println("La persona che stai cercando tramite il numero di telefono e' "+cercaTelefono);
-		} else {
-			System.out.println("Nessuna persona trovata");
-		}
-		
-		
-	}	
+
+	}
+
+	
 	}
 

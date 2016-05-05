@@ -10,32 +10,28 @@ public class Persona {
 	private String nome;
 	private String cognome;
 	private int eta;
-	private String TELEFONO="^+39 \\d{3} \\d{7}|^+39 \\d{10}|\\d{13}|^+39 \\d{3} \\d{3} \\d{4} ";
-	private String E_MAIL=" ^[_A-Za-z0-9\\+]+(\\.[_A-Za-z0-9]+)*@"
+	private String espressioneRegolareTelefono="^+39 \\d{3} \\d{7}|^+39 \\d{10}|\\d{13}|^+39 \\d{3} \\d{3} \\d{4} ";
+	private String espressioneRegolareE_mail=" ^[_A-Za-z0-9\\+]+(\\.[_A-Za-z0-9]+)*@"
 			+ "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]*)$";
 	private Date data;
 	
-	public Persona(String nome, String cognome, int eta, String TELEFONO, String E_MAIL, Date data){
-		Pattern pattern=Pattern.compile(E_MAIL);
-		Pattern pattern1=Pattern.compile(TELEFONO);
-		Matcher matcher=pattern.matcher(E_MAIL);
+	public Persona(String nome, String cognome, int eta, String espressioneRegolareTelefono, String espressioneRegolareE_mail, Date data){
+		Pattern pattern=Pattern.compile(espressioneRegolareE_mail);
+		Pattern pattern1=Pattern.compile(espressioneRegolareTelefono);
+		Matcher matcher=pattern.matcher(espressioneRegolareE_mail);
 		this.nome=nome;
 		this.cognome=cognome;
 		this.eta=eta;
 		this.data=data;
 		if(matcher.find()){
-			this.E_MAIL=E_MAIL;
+			this.espressioneRegolareE_mail=espressioneRegolareE_mail;
 		}
-		Matcher matcher1=pattern.matcher(TELEFONO);
+		Matcher matcher1=pattern.matcher(espressioneRegolareTelefono);
 		if(matcher1.find()){
-			this.TELEFONO=TELEFONO;
+			this.espressioneRegolareTelefono=espressioneRegolareTelefono;
 		}
 	}
-	@Override
-	public String toString() {
-		return "Persona [Nome=" + nome + ", Cognome= " + cognome + ", Eta'= " + eta + ", Numero di telefono= " + TELEFONO + ", email= "
-				+ E_MAIL + ", data=" + data + "]";
-	}
+	
 	
 	public String getNome() {
 		return nome;
@@ -62,21 +58,37 @@ public class Persona {
 	}
 
 	public String getTelefono() {
-		return TELEFONO;
+		return espressioneRegolareTelefono;
 	}
 
 	public void setTelefono(String telefono) {
-		this.TELEFONO = telefono;
+		this.espressioneRegolareTelefono = telefono;
 	}
 
 	public String getEmail() {
-		return E_MAIL;
+		return espressioneRegolareE_mail;
 	}
 
 	public void setEmail(String email) {
-		this.E_MAIL = email;
+		this.espressioneRegolareE_mail = espressioneRegolareE_mail;
+	}
+	@Override
+	public String toString() {
+		return "Persona [Nome=" + nome + ", Cognome= " + cognome + ", Eta'= " + eta + ", Numero di telefono= " + espressioneRegolareTelefono + ", email= "
+				+ espressioneRegolareE_mail + ", data=" + data + "]";
 	}
 	
+	public boolean modificaPersona(String nome, String cognome, Integer eta, String numero_telefono, String email, Date data){
+		this.nome = nome;
+		this.cognome = cognome;
+		this.eta = eta;
+		this.espressioneRegolareTelefono = numero_telefono;
+		this.espressioneRegolareE_mail = email;
+		this.data = data;
+		return true;
+	}
+
+
 	
 }
 
