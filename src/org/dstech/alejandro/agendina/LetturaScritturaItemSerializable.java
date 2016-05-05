@@ -10,7 +10,7 @@
  * total_hours_wasted_here: 10
  * 
  */
-package org.dstech.fsisca.serializzaione;
+package org.dstech.alejandro.agendina;
 
 import java.io.EOFException;
 import java.io.File;
@@ -23,20 +23,22 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.dstech.fsisca.serializzaione.ItemSerializable;
+
 /**
  * @author franksisca
  *
  */
 public class LetturaScritturaItemSerializable {
 
-	public static List<ItemSerializable> recuperaListaOggetti(String filePath) throws ClassNotFoundException, IOException {
-		List<ItemSerializable> listaOggetti = new ArrayList<ItemSerializable>();
+	public static List<Persona> recuperaListaOggetti(String filePath) throws ClassNotFoundException, IOException {
+		List<Persona> listaOggetti = new ArrayList<Persona>();
 		File fileSource = new File(filePath);
 		FileInputStream inputStream = new FileInputStream(fileSource);
 		ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
-		ItemSerializable readObject;
+		Persona readObject;
 		try {
-			while ((readObject = (ItemSerializable) objectInputStream.readObject()) != null) {
+			while ((readObject = (Persona) objectInputStream.readObject()) != null) {
 
 				listaOggetti.add(readObject);
 			}
@@ -50,11 +52,11 @@ public class LetturaScritturaItemSerializable {
 		return listaOggetti;
 	}
 
-	public static boolean salvaListaOggetti(String filePath, List<ItemSerializable> listaOggetti) throws IOException {
+	public static boolean salvaListaOggetti(String filePath, List<Persona> listaOggetti) throws IOException {
 		File fileSource = new File(filePath);
 		FileOutputStream fileOutputStream = new FileOutputStream(fileSource);
 		ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-		for (ItemSerializable itemSerializable : listaOggetti) {
+		for (Persona itemSerializable : listaOggetti) {
 			objectOutputStream.writeObject(itemSerializable);
 		}
 		objectOutputStream.flush();
@@ -62,32 +64,5 @@ public class LetturaScritturaItemSerializable {
 		fileOutputStream.close();
 		return true;
 
-	}
-
-	/**
- * 
- */
-	public static void main(String[] args) {
-		met(5);
-	}
-	private static void met(int val) {
-		// TODO Auto-generated method stub
-		switch (val) {
-		case 1:
-			System.out.println("siamo nel case 1");
-			break;
-		case 3: 
-			System.out.println("siamo nel case 3");
-			break;
-		case 4:
-			System.out.println("siamo nel case 4");
-			break;
-			
-//		default:
-//			System.out.println("siamo nel case default");
-//
-//			break;
-
-		}
 	}
 }

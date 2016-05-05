@@ -1,27 +1,48 @@
 package org.dstech.vangelini.Agenda;
 
 import java.io.BufferedReader;
+import java.io.EOFException;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import org.dstech.fsisca.serializzaione.ItemSerializable;
+
+@SuppressWarnings("unused")
 public class LetturaSalvataggioFile {
 
-	public void salvaFile(String nomeFile, Agenda agenda) throws IOException {
-		File file = new File(nomeFile);
+	public void salvaFile(String filePath, Agenda agenda) throws IOException {
+		//Salvataggio stringhe
+		/*File file = new File(filePath);
 		FileWriter fileWriter = new FileWriter(file);
 		ArrayList<Persona> liste = agenda.getListaPersone();
 		for(Persona persona : liste){
 			fileWriter.append(persona.toStringFile()+"\r\n");
 		}
 		fileWriter.flush();
-		fileWriter.close();
+		fileWriter.close();*/
+		ArrayList<Persona> liste = agenda.getListaPersone();
+		File fileSource = new File(filePath);
+		FileOutputStream fileOutputStream = new FileOutputStream(fileSource);
+		ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+		for (Persona persona : liste) {
+			objectOutputStream.writeObject(persona);
+		}
+		objectOutputStream.flush();
+		objectOutputStream.close();
+		fileOutputStream.close();
+		//return true;
 	}
 
 	public void creaFile(String pippo) throws IOException {
@@ -33,9 +54,8 @@ public class LetturaSalvataggioFile {
 		fileWriter.close();
 	}	
 	
-	public Agenda leggiFile(String fileUrl) throws FileNotFoundException, IOException {
-		Agenda agenda = new Agenda();
-		
+	public Agenda leggiFile(String fileUrl) throws FileNotFoundException, IOException, ClassNotFoundException {
+		/*Agenda agenda = new Agenda();
 		File file = new File(fileUrl);
 		FileReader in = new FileReader(file);
 		BufferedReader buffereReader = new BufferedReader(in);
@@ -65,6 +85,22 @@ public class LetturaSalvataggioFile {
 			readLine = buffereReader.readLine();
 		}
 		buffereReader.close();
+		return agenda;*/
+		Agenda agenda = new Agenda();
+		ArrayList<Persona> listaOggetti = new ArrayList<Persona>();
+		File fileSource = new File(fileUrl);
+		FileInputStream inputStream = new FileInputStream(fileSource);
+		ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
+		Persona readObject;
+		try {
+			while ((readObject = (Persona) objectInputStream.readObject()) != null) {
+				listaOggetti.add(readObject);
+			}
+		} catch (EOFException exp) {
+			agenda.setListaPersone(listaOggetti);
+		}
+		inputStream.close();
+		objectInputStream.close();
 		return agenda;
 	}
 

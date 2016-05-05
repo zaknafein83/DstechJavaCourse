@@ -1,47 +1,83 @@
 package org.dstech.alejandro.agendina;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
 public class Main {
 
 	public static void main(String[] args) throws Exception, IOException {
 		// TODO Auto-generated method stub
+		final String PATH = "C:\\Users\\Alejandro\\git\\DstechJavaCourse\\src\\org\\dstech\\alejandro\\agendina\\agendina.jjj";
 		Agendina.leggiAgendina();
-		
-		Persona persona = new Persona();
-		persona.setNome("Alejandro");
-		persona.setCognome("BlaBlaBla");
-		persona.setEmail("aledip@yahoo.it");
-		persona.setEta(22);
-		persona.setTelefono("+3400898830");
+		menu();
 
-		Persona persona2 = new Persona();
-		persona2.setNome("Ronaldo");
-		persona2.setCognome("Da silva");
-		persona2.setEmail("ronaldo@yahoo.it");
-		persona2.setEta(23);
-		persona2.setTelefono("+3405558830");
+	}
 
-		Persona persona3 = new Persona();
-		persona3.setNome("Claudio");
-		persona3.setCognome("Ranieri");
-		persona3.setEmail("ranieri@yahoo.it");
-		persona3.setEta(64);
-		persona3.setTelefono("+3405558830");
+	/**
+	 * 
+	 */
+	public static void showMenu() {
+		// TODO Auto-generated method stub
+		System.out.println("################################");
+		System.out.println("M E N U :");
+		System.out.println("################################");
+		System.out.println("0 - Esci");
+		System.out.println("1 - Aggiungi un contatto");
+		System.out.println("2 - Stampa lista dei contatti");
+		System.out.println("3 - Modifica contatto");
+		System.out.println("4 - Rimuove un contatto");
+		System.out.println("5 - Ricerca per nome");
+		System.out.println("6 - Ricerca per telefono");
+		System.out.println("7 - Stampa la lista dei contatti in ordine alfabetico");
+		System.out.println("8 - Salva lista");
+		System.out.println("################################");
 
-		Agendina agendina = new Agendina();
+	}
 
-		agendina.addPersona(persona);
-		agendina.addPersona(persona2);
-		agendina.addPersona(persona3);
+	public static void menu() throws IOException {
+		int choice = 9;
+		Scanner scanner = new Scanner(System.in);
 
-		agendina.stampListPersone();
-		agendina.removePersona(persona2);
-		System.out.println(agendina.searchForTelefono("+3400898830"));
-		System.out.println(agendina.searchForNome("Claudio"));
-		agendina.stampListPersoneAlpha("nome");
-		Agendina.salvaAgendina();
+		while (choice != 0) {
+			showMenu();
+			try {
+				choice = scanner.nextInt();
+				switch (choice) {
+				case 1:
+					Agendina.addPersona();
+					break;
+				case 2:
+					Agendina.stampListPersone();
+					break;
+				case 3:
+					Agendina.modificaPersona();
+					break;
+				case 4:
+					Agendina.removePersona();
+					break;
+				case 5:
+					Agendina.searchForNome();
+					break;
+				case 6:
+					Agendina.searchForTelefono();
+					break;
+				case 7:
+					Agendina.stampListPersoneAlpha();
+					break;
+				case 8:
+					Agendina.salvaAgendina();
+					break;
+				}
+
+			} catch (InputMismatchException exp) {
+				System.out.println("Only int");
+
+			} catch (NumberFormatException exp) {
+				System.out.println("Only int");
+
+			}
+		}
 
 	}
 

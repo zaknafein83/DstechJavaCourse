@@ -3,7 +3,7 @@ package org.dstech.alejandro.agendina;
 import java.io.Serializable;
 import java.util.Date;
 
-public class Persona implements Serializable{
+public class Persona implements Serializable {
 	/**
 	 * 
 	 */
