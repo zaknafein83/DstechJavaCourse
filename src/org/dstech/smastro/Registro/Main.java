@@ -60,7 +60,7 @@ public class Main {
 			
 			//classe.setListaStudenti(listaStudenti);
 			
-			System.out.println(classe.getListaStudenti());
+//			System.out.println(classe.getListaStudenti());
 			
 			Docente docente=new Docente();
 			docente.setNome("Domenico");
@@ -84,8 +84,8 @@ public class Main {
 			classe.getListaDocenti().add(docente1);
 			
 			
-			System.out.println(classe.getListaDocenti());
-			//classe.stampaListaStudenti(listaStudenti);
-			//classe.stampaListaDocenti(listaDocenti);
+//			System.out.println(classe.getListaDocenti());
+			classe.stampaListaStudenti();
+			classe.stampaListaDocenti();
 		}
 }

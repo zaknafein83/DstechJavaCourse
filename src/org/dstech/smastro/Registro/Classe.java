@@ -21,13 +21,13 @@ public class Classe {
 		this.listaDocenti = listaDocenti;
 	}
 	
-	public void stampaListaStudenti(List<Studente> listaStudenti) {
+	public void stampaListaStudenti() {
 
 		for (Studente studenti : listaStudenti) {
 			System.out.println(listaStudenti);
 		}
 	}
-	public void stampaListaDocenti(List<Docente> listaDocenti){
+	public void stampaListaDocenti(){
 		for(Docente docenti: listaDocenti){
 			System.out.println(listaDocenti);
 		}
