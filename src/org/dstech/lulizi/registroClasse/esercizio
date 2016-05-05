@@ -1,0 +1,25 @@
+Creare una classe astratta Persona che metta a disposizione i seguenti metodi:
+
+public String getNome()
+public String getCognome()
+public String getCodFiscale()
+public java.util.Date getDataNascita()
+public abstrac String getMatricola()
+
+Implementare 2 classi che estendono Persona che si chiamano Studente, Docente.
+
+la matricola dello studente è composta dal suo nome+meseDiNascita+annoNascita
+la matricola del docente è composta dal suo cognome+meseDiNascita+codFiscale
+
+Implementare una classe Classe che sarà composta da una lista di studenti, due docenti.
+
+implementare un metodo che fa l'appello per ogni giorno segnando le assenze e le presenze degli studenti, indicando (in modo casuale) quale docente ha fatto l'appello.
+Su file devono essere salvati la classe e su un file separato il registro. Il registro può essere consultato per giorno e ci dice le presenze e le assenze di quel giorno.
+
+Altre funzionalità che devono essere messe a disposizione sono:
+
+Dato uno studente, calcolare quanti giorni di assenza ha fatto.
+Dato un docente, calcolare quante volte ha fatto l'appello.
+Dato uno studente, stampare giorno per giorno se assente o presente
+
+Implementare un main che permetta di utilizzare l'applicazione.
