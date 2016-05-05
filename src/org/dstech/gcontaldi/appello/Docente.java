@@ -3,23 +3,20 @@ package org.dstech.gcontaldi.appello;
 public class Docente extends Persona {
 
 	private String matricola;
-	
-	
+
 	public String getMatricola() {
 		return matricola;
 	}
 
+	public void setMatricola() {
 
-	public void setMatricola(String matricola) {
-		this.matricola = matricola;
+		matricola = (getCognome() + getDataNascita() + getCodFiscale());
+
 	}
-
 
 	@Override
 	public String matricola() {
 		return null;
 	}
-	
-	
 
 }

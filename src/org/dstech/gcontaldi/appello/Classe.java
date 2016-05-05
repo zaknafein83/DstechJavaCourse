@@ -5,7 +5,23 @@ import java.util.List;
 
 public class Classe {
 
-	List<Persona> listaStudenti = new ArrayList<>();
-	List<Persona> listaDocenti = new ArrayList<>();
+	private List<Studente> listaStudenti = new ArrayList<>();
+	private List<Docente> listaDocenti = new ArrayList<>();
+
+	public List<Studente> getListaStudenti() {
+		return listaStudenti;
+	}
+
+	public void setListaStudenti(List<Studente> listaStudenti) {
+		this.listaStudenti = listaStudenti;
+	}
+
+	public List<Docente> getListaDocenti() {
+		return listaDocenti;
+	}
+
+	public void setListaDocenti(List<Docente> listaDocenti) {
+		this.listaDocenti = listaDocenti;
+	}
 
 }

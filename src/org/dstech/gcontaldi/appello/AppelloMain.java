@@ -1,78 +1,85 @@
 package org.dstech.gcontaldi.appello;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class AppelloMain {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ParseException {
 
 		Classe classe = new Classe();
-		
+
 		Studente studente = new Studente();
 		studente.setNome("Paolo");
 		studente.setCognome("Rossi");
 		studente.setCodFiscale("PALRSS91A15H501W");
-		SimpleDateFormat dateFormat = new SimpleDateFormat("15-08-91");
-		Date newDate = new Date();
-		studente.setDataNascita(dateFormat.format(newDate));
-		studente.getMatricola();
+		String data = "15-08-1991";
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+		Date parse = dateFormat.parse(data);
+		studente.setDataNascita(dateFormat.format(parse));
+		studente.setMatricola();
 
 		Studente studente2 = new Studente();
 		studente2.setNome("Rosa");
 		studente2.setCognome("Pane");
 		studente2.setCodFiscale("ROSPNN91G09F501H");
-		SimpleDateFormat dateFormat2 = new SimpleDateFormat("09-01-91");
-		Date newDate2 = new Date();
-		studente2.setDataNascita (dateFormat2.format(newDate2));
-		studente2.getMatricola();
+		String data2 = "09-01-1991";
+		SimpleDateFormat dateFormat2 = new SimpleDateFormat("dd-MM-yyyy");
+		Date parse2 = dateFormat2.parse(data2);
+		studente2.setDataNascita(dateFormat2.format(parse2));
+		studente2.setMatricola();
 
 		Studente studente3 = new Studente();
 		studente3.setNome("Giovanni");
 		studente3.setCognome("Magnotta");
 		studente3.setCodFiscale("MGNGVN90F28H501W");
-		SimpleDateFormat dateFormat3 = new SimpleDateFormat("28-02-90");
-		Date newDate3 = new Date();
-		studente3.setDataNascita (dateFormat3.format(newDate3));
-		studente3.getMatricola();
+		String data3 = "28-02-1990";
+		SimpleDateFormat dateFormat3 = new SimpleDateFormat("dd-MM-yyyy");
+		Date parse3 = dateFormat3.parse(data3);
+		studente3.setDataNascita(dateFormat3.format(parse3));
+		studente3.setMatricola();
 
 		Studente studente4 = new Studente();
 		studente4.setNome("Carlo");
 		studente4.setCognome("Pincopallo");
 		studente4.setCodFiscale("PNCCRL88O17V501W");
-		SimpleDateFormat dateFormat4 = new SimpleDateFormat("17-10-88");
-		Date newDate4 = new Date();
-		studente4.setDataNascita (dateFormat4.format(newDate4));
-		studente4.getMatricola();
+		String data4 = "17-10-1988";
+		SimpleDateFormat dateFormat4 = new SimpleDateFormat("dd-MM-yyyy");
+		Date parse4 = dateFormat4.parse(data4);
+		studente4.setDataNascita(dateFormat4.format(parse4));
+		studente4.setMatricola();
 
-		classe.listaStudenti.add(studente);
-		classe.listaStudenti.add(studente2);
-		classe.listaStudenti.add(studente3);
-		classe.listaStudenti.add(studente4);
+		classe.getListaStudenti().add(studente);
+		classe.getListaStudenti().add(studente2);
+		classe.getListaStudenti().add(studente3);
+		classe.getListaStudenti().add(studente4);
 
 		Docente docente = new Docente();
 		docente.setNome("Alfonso");
 		docente.setCognome("Pirelli");
 		docente.setCodFiscale("PSLALF58M11F501W");
-		SimpleDateFormat dateFormat5 = new SimpleDateFormat("11-02-58");
-		Date newDate5 = new Date();
-		docente.setDataNascita (dateFormat5.format(newDate5));
-		docente.getMatricola();
+		String data5 = "11-02-1958";
+		SimpleDateFormat dateFormat5 = new SimpleDateFormat("dd-MM-yyyy");
+		Date parse5 = dateFormat5.parse(data5);
+		docente.setDataNascita(dateFormat5.format(parse5));
+		docente.setMatricola();
 
 		Docente docente2 = new Docente();
 		docente2.setNome("Sonia");
 		docente2.setCognome("Fusco");
-		docente2.setCodFiscale("FSCSNI62s24R804T");
-		SimpleDateFormat dateFormat6 = new SimpleDateFormat("24-09-62");
-		Date newDate6 = new Date();
-		docente2.setDataNascita (dateFormat6.format(newDate6));
-		docente2.getMatricola();
+		docente2.setCodFiscale("FSCSNI62S24R804T");
+		String data6 = "24-09-62";
+		SimpleDateFormat dateFormat6 = new SimpleDateFormat("dd-MM-yyyy");
+		Date parse6 = dateFormat6.parse(data6);
+		docente2.setDataNascita(dateFormat6.format(parse6));
+		docente2.setMatricola();
 
-		classe.listaDocenti.add(docente);
-		classe.listaDocenti.add(docente2);
+		classe.getListaDocenti().add(docente);
+		classe.getListaDocenti().add(docente2);
 
-		System.out.println(classe.listaStudenti);
-		System.out.println(classe.listaDocenti);
+		System.out.println(classe.getListaStudenti());
+		System.out.println(classe.getListaDocenti());
 
 	}
 
