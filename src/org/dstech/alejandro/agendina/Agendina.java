@@ -16,7 +16,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Agendina implements Serializable {
-	/**(+39 338 1234567 | +39 3381234567 | 3381234567 | +39 338 123 4567)
+	/**
+	 * (+39 338 1234567 | +39 3381234567 | 3381234567 | +39 338 123 4567)
 	 * (\+\\d{2,3}
 	 */
 	private static final long serialVersionUID = 1L;
@@ -46,9 +47,9 @@ public class Agendina implements Serializable {
 		p.setEta(scanner.nextInt());
 		scanner.nextLine();
 		System.out.println("Inserisci il telefono");
-		while(true){
+		while (true) {
 			String telefono = scanner.nextLine();
-			if(telefonoCheck(telefono)){
+			if (telefonoCheck(telefono)) {
 				p.setTelefono(telefono);
 				System.out.println("Formato giusto");
 				break;
@@ -169,11 +170,7 @@ public class Agendina implements Serializable {
 	public static void salvaAgendina() throws IOException {
 		Agendina agendina = new Agendina();
 		try {
-			FileOutputStream file = new FileOutputStream(
-					"C:\\Users\\Alejandro\\git\\DstechJavaCourse\\src\\org\\dstech\\alejandro\\agendina\\agendina.jjj");
-			ObjectOutputStream ob = new ObjectOutputStream(file);
-			ob.writeObject(agendina);
-			ob.close();
+			LetturaScritturaItemSerializable.salvaListaOggetti("C:\\Users\\Alejandro\\git\\DstechJavaCourse\\src\\org\\dstech\\alejandro\\agendina\\agendina.jjj",listaPersone);
 			System.out.println("Agendina salvata con successo");
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -182,7 +179,8 @@ public class Agendina implements Serializable {
 
 	public static void leggiAgendina() throws FileNotFoundException, IOException, ClassNotFoundException {
 		try {
-			listaPersone = (LetturaScritturaItemSerializable.recuperaListaOggetti("C:\\Users\\Alejandro\\git\\DstechJavaCourse\\src\\org\\dstech\\alejandro\\agendina\\agendina.jjj"));
+			listaPersone = (LetturaScritturaItemSerializable.recuperaListaOggetti(
+					"C:\\Users\\Alejandro\\git\\DstechJavaCourse\\src\\org\\dstech\\alejandro\\agendina\\agendina.jjj"));
 		} catch (FileNotFoundException exc) {
 			System.out.println(exc);
 			FileOutputStream file = new FileOutputStream(
