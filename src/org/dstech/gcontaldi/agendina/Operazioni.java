@@ -1,11 +1,18 @@
 package org.dstech.gcontaldi.agendina;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class Operazioni {
 
-	public static void inserisciPersona() {
+	public List<Persone> listaPersone;
 
+	public void inserisciPersona(Persone persone) {
+
+		listaPersone.add(persone);
+	}
+
+	public static Persone creaPersona() {
 		Persone persone = new Persone();
 
 		Scanner sc = new Scanner(System.in);
@@ -25,18 +32,17 @@ public class Operazioni {
 		persone.setEta(eta);
 		persone.setTelefono(telefono);
 		persone.setMail(mail);
-
-		Main main = new Main();
-		main.list.add(persone);
+		return persone;
 	}
 
-	public static void modificaPersona() {
+	public void modificaPersona() {
 
 		Scanner scanner = new Scanner(System.in);
 		String inserimento = scanner.nextLine();
 
-		for (Persone elemento : Main.list) {
-			if (inserimento == elemento.getCognome()) {
+		for (Persone persone : listaPersone) {
+
+			if (persone.getCognome().equals(inserimento)) {
 				System.out.println("Che campi vuoi modificare?");
 				System.out.println("1 - Modifica nome");
 				System.out.println("2 - Modifica cognome");
@@ -49,19 +55,19 @@ public class Operazioni {
 				int modificaCampo = scanner2.nextInt();
 				switch (modificaCampo) {
 				case 1:
-					elemento.setNome(modifica);
+					persone.setNome(modifica);
 					break;
 				case 2:
-					elemento.setCognome(modifica);
+					persone.setCognome(modifica);
 					break;
 				case 3:
-					elemento.setEta(modifica);
+					persone.setEta(modifica);
 					break;
 				case 4:
-					elemento.setTelefono(modifica);
+					persone.setTelefono(modifica);
 					break;
 				case 5:
-					elemento.setMail(modifica);
+					persone.setMail(modifica);
 					break;
 				}
 			}
@@ -69,17 +75,28 @@ public class Operazioni {
 		}
 	}
 
-	public static void rimuoviPersona() {
+	public void rimuoviPersona() {
 
 		Scanner scanner3 = new Scanner(System.in);
 		String inserimento = scanner3.nextLine();
 
-		for (Persone elemento : Main.list) {
-			if (inserimento == elemento.getCognome()) {
-				Main.list.remove(inserimento)
+		for (Persone persone : listaPersone) {
+			if (persone.getCognome().equals(inserimento)) {
+				listaPersone.remove(persone);
 
 			}
 		}
 
+	}
+
+	public void ricerca() {
+
+		Scanner scanner3 = new Scanner(System.in);
+		String inserimento = scanner3.nextLine();
+		for (Persone persone : listaPersone) {
+			if (persone.getTelefono().equals(inserimento)) {
+
+			}
+		}
 	}
 }

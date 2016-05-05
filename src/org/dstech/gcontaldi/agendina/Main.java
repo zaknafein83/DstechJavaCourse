@@ -6,9 +6,10 @@ import java.util.Scanner;
 
 public class Main {
 
-	public static List<Persone> list = new ArrayList<>();
-
 	public static void main(String[] args) {
+
+		// Persone persone = Operazioni.creaPersona();
+		Operazioni operazioni = new Operazioni();
 
 		for (int i = 0; i < 100; i++) {
 
@@ -25,7 +26,7 @@ public class Main {
 			int scelta = scanner.nextInt();
 			switch (scelta) {
 			case 1:
-				Operazioni.inserisciPersona();
+				Operazioni.creaPersona();
 				System.out.println("Hai inserito un contatto!");
 				System.out.println("Cosa vuoi fare?");
 				System.out.println("1 = torna al menu");
@@ -34,12 +35,11 @@ public class Main {
 				if (torna == 1) {
 					break;
 				} else {
-					i = 100;
 					break;
 				}
 
 			case 2:
-				System.out.println(list);
+				// System.out.println(list);
 				System.out.println("Cosa vuoi fare?");
 				System.out.println("1 = torna al menu");
 				System.out.println("9 = chiudi app");
@@ -47,12 +47,11 @@ public class Main {
 				if (stampa == 1) {
 					break;
 				} else {
-					i = 100;
 					break;
 				}
 			case 3:
 				System.out.println("Chi vuoi modificare? Inserisci cognome.");
-				Operazioni.modificaPersona();
+				operazioni.modificaPersona();
 				System.out.println("Contatto modificato");
 				System.out.println("Cosa vuoi fare?");
 				System.out.println("1 = torna al menu");
@@ -61,12 +60,11 @@ public class Main {
 				if (modifica == 1) {
 					break;
 				} else {
-					i = 100;
 					break;
 				}
 			case 4:
 				System.out.println("Chi vuoi elimiare? Inserisci cognome.");
-				Operazioni.rimuoviPersona();
+				operazioni.rimuoviPersona();
 				System.out.println("Contatto eliminato");
 				System.out.println("Cosa vuoi fare?");
 				System.out.println("1 = torna al menu");
@@ -75,7 +73,16 @@ public class Main {
 				if (rimuovi == 1) {
 					break;
 				} else {
-					i = 100;
+					break;
+				}
+			case 5:
+				System.out.println("Chi vuoi cercare? Inserisci telefono.");
+				operazioni.ricerca();
+				System.out.println();
+				int ricerca = scanner.nextInt();
+				if (ricerca == 1) {
+					break;
+				} else {
 					break;
 				}
 
