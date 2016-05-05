@@ -3,17 +3,18 @@ package org.dstech.vangelini.gestioneClasse;
 import java.util.Calendar;
 
 public class Studente extends Persona{
+	private String matricola;
 	
-	public String getMatricola(Studente persona){
+	public void setMatricola(Studente persona){
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(persona.getDataNascita());
 		int mese = cal.get(Calendar.MONTH);
 		int anno = cal.get(Calendar.YEAR);
-		return (persona.getNome()+mese+anno);
+		matricola = (persona.getNome()+mese+anno);
 	}
 
 	@Override
 	public String getMatricola() {
-		return null;
+		return matricola;
 	}
 }

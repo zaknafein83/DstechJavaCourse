@@ -25,4 +25,25 @@ public abstract class Persona {
 	}
 	
 	public abstract String getMatricola();
+
+	public Date getData() {
+		return data;
+	}
+
+	public void setData(Date data) {
+		this.data = data;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public void setCognome(String cognome) {
+		this.cognome = cognome;
+	}
+
+	public void setCodFiscale(String codFiscale) {
+		this.codFiscale = codFiscale;
+	}
+	
 }

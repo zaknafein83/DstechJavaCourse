@@ -3,18 +3,18 @@ package org.dstech.vangelini.gestioneClasse;
 import java.util.Calendar;
 
 public class Docente extends Persona {
+	private String matricola;
 	
-	public String getMatricola(Persona persona){
+	public void setMatricola(Docente docente){
 		Calendar cal = Calendar.getInstance();
-		cal.setTime(persona.getDataNascita());
+		cal.setTime(docente.getDataNascita());
 		int mese = cal.get(Calendar.MONTH);
-		return (persona.getCognome()+mese+persona.getCodFiscale());
+		matricola = (docente.getCognome()+mese+docente.getCodFiscale());
 	}
-
+	
 	@Override
 	public String getMatricola() {
-		// TODO Auto-generated method stub
-		return null;
+		return matricola;
 	}
 	
 }
