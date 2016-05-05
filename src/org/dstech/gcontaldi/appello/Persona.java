@@ -1,13 +1,11 @@
 package org.dstech.gcontaldi.appello;
 
-import java.util.Date;
-
 public abstract class Persona {
 
 	private String nome;
 	private String cognome;
 	private String codFiscale;
-	private Date dataNascita;
+	private String dataNascita;
 
 	public abstract String matricola();
 
@@ -35,11 +33,11 @@ public abstract class Persona {
 		this.codFiscale = codFiscale;
 	}
 
-	public Date getDataNascita() {
+	public String getDataNascita() {
 		return dataNascita;
 	}
 
-	public void setDataNascita(Date dataNascita) {
+	public void setDataNascita(String dataNascita) {
 		this.dataNascita = dataNascita;
 	}
 

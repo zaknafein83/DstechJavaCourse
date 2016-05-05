@@ -63,4 +63,31 @@ public class LetturaScritturaItemSerializable {
 		return true;
 
 	}
+
+	/**
+ * 
+ */
+	public static void main(String[] args) {
+		met(5);
+	}
+	private static void met(int val) {
+		// TODO Auto-generated method stub
+		switch (val) {
+		case 1:
+			System.out.println("siamo nel case 1");
+			break;
+		case 3: 
+			System.out.println("siamo nel case 3");
+			break;
+		case 4:
+			System.out.println("siamo nel case 4");
+			break;
+			
+//		default:
+//			System.out.println("siamo nel case default");
+//
+//			break;
+
+		}
+	}
 }
