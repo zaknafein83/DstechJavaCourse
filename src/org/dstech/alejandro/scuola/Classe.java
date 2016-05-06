@@ -4,20 +4,14 @@
 package org.dstech.alejandro.scuola;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
-
-import org.dstech.alejandro.agendina.Agendina;
-import org.dstech.alejandro.agendina.LetturaScritturaItemSerializable;
-import org.dstech.alejandro.agendina.Persona;
 
 /**
  * @author Alejandro
@@ -25,7 +19,11 @@ import org.dstech.alejandro.agendina.Persona;
  */
 public class Classe implements Serializable {
 
-	private static List<Studente> listaStudenti = new ArrayList<Studente>();
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private List<Studente> listaStudenti = new ArrayList<Studente>();
 	Docente a;
 	Docente b;
 
@@ -57,6 +55,7 @@ public class Classe implements Serializable {
 
 		Studente p = new Studente();
 
+		@SuppressWarnings("resource")
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Inserisci il nome");
 		p.setNome(scanner.nextLine());

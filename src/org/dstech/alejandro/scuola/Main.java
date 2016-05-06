@@ -4,12 +4,9 @@
 package org.dstech.alejandro.scuola;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-
-import org.dstech.alejandro.agendina.Agendina;
 
 /**
  * @author Alejandro
@@ -46,6 +43,7 @@ public class Main {
 		Classe c = new Classe();
 		Registro r = new Registro();
 		
+		@SuppressWarnings("resource")
 		Scanner scanner = new Scanner(System.in);
 
 		while (choice != 0) {

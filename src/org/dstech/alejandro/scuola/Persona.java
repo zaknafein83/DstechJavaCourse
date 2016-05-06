@@ -4,7 +4,6 @@
 package org.dstech.alejandro.scuola;
 
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -13,6 +12,10 @@ import java.util.Date;
  */
 public abstract class Persona implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String nome;
 	private String cognome;
 	private String codfiscale;

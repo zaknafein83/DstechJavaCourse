@@ -8,6 +8,7 @@ public class Main {
 
 	public static void main(String[] args) throws Exception, IOException {
 		// TODO Auto-generated method stub
+		@SuppressWarnings("unused")
 		final String PATH = "C:\\Users\\Alejandro\\git\\DstechJavaCourse\\src\\org\\dstech\\alejandro\\agendina\\agendina.jjj";
 		Agendina.leggiAgendina();
 		menu();
@@ -37,6 +38,7 @@ public class Main {
 
 	public static void menu() throws IOException {
 		int choice = 9;
+		@SuppressWarnings("resource")
 		Scanner scanner = new Scanner(System.in);
 
 		while (choice != 0) {
