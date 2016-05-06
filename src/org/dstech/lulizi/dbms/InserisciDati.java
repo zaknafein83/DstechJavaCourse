@@ -1,12 +1,12 @@
-package it.dstech.corsotestdb;
+package org.dstech.lulizi.dbms;
 
-import it.dstech.jpatest.utility.DBUtilityConnection;
 import java.util.Date;
 import java.lang.String;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+
+import org.dstech.dbms.utility.DBUtilityConnection;
 
 /**
  *
@@ -45,7 +45,7 @@ public class InserisciDati {
 			preparedStatement.setString(2, "Verdi"); //secondo punto=cognome
 			preparedStatement.setInt(3, 22);
 			preparedStatement.setString(4, "Milano");
-			preparedStatement.setDate(5, java.sql.Date.valueOf(java.time.LocalDate.now())); //data Creazione utente
+			preparedStatement.setDate(5, new java.sql.Date(System.currentTimeMillis())); //data Creazione utente
 			
 			// execute insert SQL stetement
 			preparedStatement.executeUpdate();

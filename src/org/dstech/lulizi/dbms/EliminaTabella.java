@@ -1,17 +1,17 @@
-package it.dstech.corsotestdb;
-
-import it.dstech.jpatest.utility.DBUtilityConnection;
+package org.dstech.lulizi.dbms;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class EliminaColonna {
+import org.dstech.dbms.utility.DBUtilityConnection;
+
+public class EliminaTabella {
 	public static void main(String[] argv) throws Exception {
 
 		try {
 
-			cancellaColonna();
+			deleteRecordIntoTable();
 
 		} catch (SQLException e) {
 
@@ -21,22 +21,26 @@ public class EliminaColonna {
 
 	}
 
-	private static void cancellaColonna() throws Exception {
+	private static void deleteRecordIntoTable() throws Exception {
 
 		Connection dbConnection = null;
 		PreparedStatement preparedStatement = null;
 
-		String cancellaColonna = "ALTER TABLE UTENTE"
-			    + "DROP COLUMN dateCreated";
+		String insertTableSQL = "DELETE FROM UTENTE "
+				+ " WHERE ID = ?";
 
 		try {
 			dbConnection = DBUtilityConnection.getDBConnection();
-			preparedStatement = dbConnection.prepareStatement(cancellaColonna);
+			preparedStatement = dbConnection.prepareStatement(insertTableSQL);
+			
+			preparedStatement.setInt(1, 2);
+			
+			
 
-			
-			preparedStatement.execute(cancellaColonna); 
-			
-			System.out.println("Colonna eliminata nella tabella UTENTE!");
+			// execute insert SQL stetement
+			preparedStatement.executeUpdate();
+
+			System.out.println("Record eliminato nella tabella REGISTRATION!");
 
 		} catch (SQLException e) {
 

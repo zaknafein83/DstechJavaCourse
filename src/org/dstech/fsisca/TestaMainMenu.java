@@ -12,6 +12,9 @@
  */
 package org.dstech.fsisca;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.util.Date;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -22,23 +25,49 @@ import java.util.Scanner;
 public class TestaMainMenu {
 
 	public static void main(String[] args) {
-		Scanner scanner = new Scanner(System.in);
-		while (true)
-			try {
-				showMenu();
-				int nextInt = Integer.parseInt(scanner.next());
-				while (nextInt != 9) {
-					showMenu();
-					nextInt = scanner.nextInt();
-				}
-			} catch (InputMismatchException exp) {
-				System.out.println("Only int");
-
-			}catch (NumberFormatException exp) {
-				System.out.println("Only int");
-
-			}
+		creaMetodo(new String());
+		
+		double in = 2.01*100.0;
+		BigDecimal integer = new BigDecimal(2.01);
+		
+		BigDecimal mol = new BigDecimal(100.0);
+		BigDecimal multiply = mol.multiply(integer);
+		System.out.println(multiply);
+		
+		
+		System.out.println(in);
+				
+				
+//		Scanner scanner = new Scanner(System.in);
+//		while (true)
+//			try {
+//				showMenu();
+//				int nextInt = Integer.parseInt(scanner.next());
+//				while (nextInt != 9) {
+//					showMenu();
+//					nextInt = scanner.nextInt();
+//				}
+//			} catch (InputMismatchException exp) {
+//				System.out.println("Only int");
+//
+//			}catch (NumberFormatException exp) {
+//				System.out.println("Only int");
+//
+//			}
 	}
+
+
+	/**
+	 * Questo metodo è completamente inutile ma è bello!!!
+	 * 
+	 * @param string legge una stringa inutile
+	 * 
+	 */
+	private static void creaMetodo(String string) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 	/**
 	 * 

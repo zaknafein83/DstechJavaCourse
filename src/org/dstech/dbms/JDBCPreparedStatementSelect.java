@@ -1,12 +1,12 @@
-package it.dstech.jpatest;
-
-import it.dstech.jpatest.utility.DBUtilityConnection;
+package org.dstech.dbms;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+import org.dstech.dbms.utility.DBUtilityConnection;
 
 public class JDBCPreparedStatementSelect {
 	private static final Connection con = null;

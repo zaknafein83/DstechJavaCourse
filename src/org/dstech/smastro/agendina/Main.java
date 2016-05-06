@@ -35,27 +35,27 @@ public class Main{
 
 	
 	switch(n){
-	case 1:
-			agenda.stampaAgenda();
-		
-			break;
-	case 2:
-			agenda.AggiungiNuovaPersona();
-			break;
-	case 3:
-		   agenda. OrdinamentoPerCognome();
-		   break;
-	case 4:
-			agenda
-			break;
-	case 5:
-		   agenda.Rimuovi();
-		   break;
-	case 6:
-		   agenda.RicercaPerTelefono();
-		   break;
-	case 7:
-		   System.out.println("Uscita dal programma");
+//	case 1:
+//			agenda.stampaAgenda();
+//		
+//			break;
+//	case 2:
+//			agenda.AggiungiNuovaPersona();
+//			break;
+//	case 3:
+//		   agenda. OrdinamentoPerCognome();
+//		   break;
+//	case 4:
+//			agenda
+//			break;
+//	case 5:
+//		   agenda.Rimuovi();
+//		   break;
+//	case 6:
+//		   agenda.RicercaPerTelefono();
+//		   break;
+//	case 7:
+//		   System.out.println("Uscita dal programma");
 	default:
 		   System.out.println("Errore");
 		   break;

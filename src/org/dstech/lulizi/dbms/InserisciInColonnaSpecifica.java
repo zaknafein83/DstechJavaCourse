@@ -1,17 +1,24 @@
-package it.dstech.jpatest;
+package org.dstech.lulizi.dbms;
 
-import it.dstech.jpatest.utility.DBUtilityConnection;
-
+import java.util.Date;
+import java.lang.String;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class JDBCPreparedStatementUpdate {
+import org.dstech.dbms.utility.DBUtilityConnection;
+
+/**
+ *
+ * @author Domenico
+ */
+public class InserisciInColonnaSpecifica {
+
 	public static void main(String[] argv) throws Exception {
 
 		try {
 
-			updateRecordIntoTable();
+			inserisciInColonna();
 
 		} catch (SQLException e) {
 
@@ -21,29 +28,22 @@ public class JDBCPreparedStatementUpdate {
 
 	}
 
-	private static void updateRecordIntoTable() throws Exception {
+	private static void inserisciInColonna() throws Exception {
 
 		Connection dbConnection = null;
 		PreparedStatement preparedStatement = null;
 
-		String insertTableSQL = "UPDATE REGISTRATION SET"
-				+ " NOME = ?, COGNOME=?, ETA=?"
-				+ " WHERE ID = ?";
-
+		String inserisciInColonna = "INSERT INTO UTENTE (professione)"+
+				"VALUES (?)";
 		try {
 			dbConnection = DBUtilityConnection.getDBConnection();
-			preparedStatement = dbConnection.prepareStatement(insertTableSQL);
-
-			preparedStatement.setString(1, "ciao");
-			preparedStatement.setString(2, "CognomeCiao");
-			preparedStatement.setInt(3, 22);
-			
-			preparedStatement.setInt(4, 1);
-
+			preparedStatement = dbConnection.prepareStatement(inserisciInColonna);
+			preparedStatement.setString(1, "Operaio");  
+						
 			// execute insert SQL stetement
 			preparedStatement.executeUpdate();
 
-			System.out.println("Record aggiornato nella tabella REGISTRATION!");
+			System.out.println("Record inserito nella Colonna Scelta!");
 
 		} catch (SQLException e) {
 

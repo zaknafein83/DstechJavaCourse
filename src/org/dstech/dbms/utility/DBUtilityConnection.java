@@ -1,4 +1,4 @@
-package it.dstech.jpatest.utility;
+package org.dstech.dbms.utility;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
