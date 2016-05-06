@@ -1,9 +1,9 @@
-package it.dstech.corsotestdb;
-
-import it.dstech.jpatest.utility.DBUtilityConnection;
+package org.dstech.lulizi.dbms;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+
+import org.dstech.dbms.utility.DBUtilityConnection;
 
 public class TestConnessione { //verifica connessione stabilita al db
 

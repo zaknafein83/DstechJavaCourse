@@ -1,9 +1,9 @@
-package it.dstech.jpatest;
-
-import it.dstech.jpatest.utility.DBUtilityConnection;
+package org.dstech.dbms;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+
+import org.dstech.dbms.utility.DBUtilityConnection;
 
 public class JDBCConnectionTest { //verifica connessione stabilita al db
 

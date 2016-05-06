@@ -7,17 +7,17 @@ import java.io.IOException;
 
 public class SalvataggioFile {
 	
-	salvaFile("/Users/edoardopierguidi/git/DstechJavaCourse/src/org/dstech/edoardo/Scuola/Registro.txt");
+//	salvaFile("/Users/edoardopierguidi/git/DstechJavaCourse/src/org/dstech/edoardo/Scuola/Registro.txt");
 
-
-		private SalvataggioFile(registro) throws IOException{
-
-			File file = new File(registro);
-			FileWriter fileWriter = new FileWriter(file);
-			fileWriter.append(registro);
-			fileWriter.flush();
-			fileWriter.close();
-		}
+//
+//		private SalvataggioFile(registro) throws IOException{
+//
+//			File file = new File(registro);
+//			FileWriter fileWriter = new FileWriter(file);
+//			fileWriter.append(registro);
+//			fileWriter.flush();
+//			fileWriter.close();
+//		}
 
 		
 

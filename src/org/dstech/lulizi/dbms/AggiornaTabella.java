@@ -1,10 +1,11 @@
-package it.dstech.corsotestdb;
-
-import it.dstech.jpatest.utility.DBUtilityConnection;
+package org.dstech.lulizi.dbms;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+
+import org.dstech.dbms.utility.DBUtilityConnection;
 
 public class AggiornaTabella {
 	public static void main(String[] argv) throws Exception {
@@ -38,7 +39,7 @@ public class AggiornaTabella {
 			preparedStatement.setString(2, "CognomeAggiornato");
 			preparedStatement.setInt(3, 22);
 			preparedStatement.setString(4, "CittaAggiornata");
-			preparedStatement.setDate(5, java.sql.Date.valueOf(java.time.LocalDate.now()));
+			preparedStatement.setDate(5, new Date(System.currentTimeMillis()));
 			
 			preparedStatement.setInt(4, 1);
 

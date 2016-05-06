@@ -1,7 +1,5 @@
 package org.dstech.edoardo.Agendina;
 
-import java.util.Scanner;
-
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.DateFormat;
@@ -21,7 +19,7 @@ public class Main {
 		LetturaSalvataggioFile file = new LetturaSalvataggioFile();
 		Agenda agenda = null;
 		try{
-			agenda = file.leggiFile("agendina.jjj");
+//			agenda = file.leggiFile("agendina.jjj");
 			System.out.println("Agenda caricata.");
 		} catch (Exception e){
 			file.creaFile("agendina.jjj");
@@ -360,10 +358,10 @@ public class Main {
 		} while(risposta != 9);
 		io.close();
 		try{
-			file.salvaFile("agendina.jjj", agenda);
+//			file.salvaFile("agendina.jjj", agenda);
 		} catch (Exception e){
 			file.creaFile("agendina.jjj");
-			file.salvaFile("agendina.jjj", agenda);
+//			file.salvaFile("agendina.jjj", agenda);
 		}
 		System.out.println("Agenda Salvata.");
 		System.out.println("La ringraziamo per aver usato MyAgend");

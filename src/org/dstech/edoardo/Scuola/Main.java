@@ -8,9 +8,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Main{
-	public static void main(String[] args) throws FileNotFoundException, IOException{
+//	public static void main(String[] args) throws FileNotFoundException, IOException{
 				
-	leggiFile("/Users/edoardopierguidi/git/DstechJavaCourse/src/org/dstech/edoardo/Scuola/Registro.txt");
+//	leggiFile("/Users/edoardopierguidi/git/DstechJavaCourse/src/org/dstech/edoardo/Scuola/Registro.txt");
 		
 
 		private static void leggiFile(String fileUrl) throws FileNotFoundException, IOException {
