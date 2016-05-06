@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.dstech.alejandro.esercizio;
+package org.dstech.alejandro.esercizi;
 
 import java.util.Scanner;
 
@@ -36,6 +36,9 @@ public class EserciziTest{
 				System.out.println(i);
 		}
 		
+//	public static void lottomatica(){
+//		
+//	}
 		
 		
 	}
