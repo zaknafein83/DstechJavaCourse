@@ -38,6 +38,7 @@ public class Registro {
 	public void appello(Classe c,Date data){
 		List<String> presenze = new ArrayList<String>();
 		
+		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
 		try{
 			for(Studente s:c.getListaStudenti()){

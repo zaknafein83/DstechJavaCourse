@@ -1,11 +1,8 @@
 package org.dstech.alejandro.agendina;
 
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -47,6 +44,7 @@ public class Agendina implements Serializable {
 
 		Persona p = new Persona();
 
+		@SuppressWarnings("resource")
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Inserisci il nome");
 		p.setNome(scanner.nextLine());
@@ -93,6 +91,7 @@ public class Agendina implements Serializable {
 
 	public static void modificaPersona() {
 		int choice = 10;
+		@SuppressWarnings("resource")
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Inserisci il nome del contatto da modificare");
 		String s = scanner.nextLine();
@@ -142,6 +141,7 @@ public class Agendina implements Serializable {
 
 	public static void removePersona() throws IOException {
 		System.out.println("Inserisci il nome della persona da rimuovere");
+		@SuppressWarnings("resource")
 		Scanner scanner = new Scanner(System.in);
 		String s = scanner.nextLine();
 		for (Persona p : listaPersone)
@@ -153,6 +153,7 @@ public class Agendina implements Serializable {
 
 	public static void searchForTelefono() {
 		System.out.println("Inserisci il telefono della persona da cercare");
+		@SuppressWarnings("resource")
 		Scanner scanner = new Scanner(System.in);
 		String s = scanner.nextLine();
 		for (Persona i : listaPersone) {
@@ -164,6 +165,7 @@ public class Agendina implements Serializable {
 
 	public static void searchForNome() {
 		System.out.println("Inserisci il nome della persona da cercare");
+		@SuppressWarnings("resource")
 		Scanner scanner = new Scanner(System.in);
 		String s = scanner.nextLine();
 
@@ -176,6 +178,7 @@ public class Agendina implements Serializable {
 
 	public static void stampListPersoneAlpha() {
 		System.out.println("Digita 1 se vuoi ordinare per nome o digita 2 per ordinare per cognome");
+		@SuppressWarnings("resource")
 		Scanner scanner = new Scanner(System.in);
 		int n = scanner.nextInt();
 		List<String> nomi = new ArrayList<String>();
@@ -197,7 +200,7 @@ public class Agendina implements Serializable {
 	}
 
 	public static void salvaAgendina() throws IOException {
-		Agendina agendina = new Agendina();
+		new Agendina();
 		try {
 			LetturaScritturaItemSerializable.salvaListaOggetti(
 					"C:\\Users\\Alejandro\\git\\DstechJavaCourse\\src\\org\\dstech\\alejandro\\agendina\\agendina.jjj",
@@ -208,13 +211,14 @@ public class Agendina implements Serializable {
 		}
 	}
 
+	@SuppressWarnings("resource")
 	public static void leggiAgendina() throws FileNotFoundException, IOException, ClassNotFoundException {
 		try {
 			listaPersone = (LetturaScritturaItemSerializable.recuperaListaOggetti(
 					"C:\\Users\\Alejandro\\git\\DstechJavaCourse\\src\\org\\dstech\\alejandro\\agendina\\agendina.jjj"));
 		} catch (FileNotFoundException exc) {
 			System.out.println(exc);
-			FileOutputStream file = new FileOutputStream(
+			new FileOutputStream(
 					"C:\\Users\\Alejandro\\git\\DstechJavaCourse\\src\\org\\dstech\\alejandro\\agendina\\agendina.jjj");
 			System.out.println("agendina.jjj ora è stata creata");
 		}

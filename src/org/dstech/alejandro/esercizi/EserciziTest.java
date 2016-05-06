@@ -24,6 +24,7 @@ public class EserciziTest{
 	public static void contaPositivi(){
 		
 		int c=0;
+		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Inserisci sequenza");
 		String s = sc.nextLine();
