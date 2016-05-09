@@ -5,19 +5,19 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class StatementCreaTabella {
-	public static void main(String argv[]) throws Exception{
+	private static void creaTabella() throws Exception{
+		PropertiesManagment proper=new PropertiesManagment();
+		Connection dbConnection=null;
+		Statement stm=null;
+		
 		
 		try{
 			creaTabella();
 		}catch(SQLException e){
 			System.err.println(e.getMessage());
 		}
-	} 
-	private static void creaTabella() throws Exception{
-		PropertiesManagment proper=new PropertiesManagment();
-		Connection dbConnection=null;
-		Statement stm=null;
-		
+	
+	
 		String creaTabella1="CREATE TABLE TABELLA_BA " +
 				"(ESTRAZIONE DATE NOT NULL, " +
 				"CONCORSO INTEGER, " +

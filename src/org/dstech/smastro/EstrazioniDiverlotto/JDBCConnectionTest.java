@@ -6,8 +6,11 @@ import java.sql.SQLException;
 
 
 public class JDBCConnectionTest {
-	public static void main(String[] argv) {
-		
+	private static void testConnection()  throws SQLException {
+		PropertiesManagment proper=new PropertiesManagment();
+
+		Connection dbConnection = null;
+
 		try {
 
 			testConnection();
@@ -17,13 +20,6 @@ public class JDBCConnectionTest {
 			System.err.println(e.getMessage());
 
 		}
-
-	}
-
-	private static void testConnection()  throws SQLException {
-		PropertiesManagment proper=new PropertiesManagment();
-
-		Connection dbConnection = null;
 
 		try {
 			dbConnection = proper.getDBConnection();
@@ -39,7 +35,7 @@ public class JDBCConnectionTest {
 			}
 
 		}
-		
-	}
+	}	
+	
 
-}
+
