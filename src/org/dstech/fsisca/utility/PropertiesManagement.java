@@ -38,7 +38,7 @@ public class PropertiesManagement {
 		try {
 			prop = new Properties();
 			System.out.println("Load properties...");
-			InputStream in = PropertiesManagement.class.getClassLoader().getResourceAsStream("rentopolis.properties");
+			InputStream in = PropertiesManagement.class.getClassLoader().getResourceAsStream("resources/application.properties");
 			prop.load(in);
 			in.close();
 			System.out.println("Properties has been loaded!");
