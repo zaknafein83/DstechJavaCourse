@@ -1,0 +1,4 @@
+database.driver= com.mysql.jdbc.Driver
+database.smastro.connection= jdbc:mysql://localhost:3306/EstrazioniDiverlotto
+database.smastro.username= root
+database.smastro.password= admin
