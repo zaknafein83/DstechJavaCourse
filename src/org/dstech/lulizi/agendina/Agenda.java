@@ -10,22 +10,22 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Agenda {
-	private List<Persona> listaPersone;
+	private List<PersonaAgenda> listaPersone;
 
-	public List<Persona> getListaPersone() {
+	public List<PersonaAgenda> getListaPersone() {
 		return listaPersone;
 	}
 
-	public void setListaPersone(List<Persona> listaPersone) {
+	public void setListaPersone(List<PersonaAgenda> listaPersone) {
 		this.listaPersone = listaPersone;
 	}
 
-	public static void aggiungiContatto(List<Persona> listaPersona) {
+	public static void aggiungiContatto(List<PersonaAgenda> listaPersona) {
 		Scanner ins = new Scanner(System.in);
 		Scanner ins2 = new Scanner(System.in);
 		Scanner ins3 = new Scanner(System.in);
 
-		Persona p = new Persona();
+		PersonaAgenda p = new PersonaAgenda();
 		try {
 
 			System.out.print("Inserisci Nome: ");
@@ -57,37 +57,37 @@ public class Agenda {
 				listaPersona.remove(persona);
 	}
 */
-	public static void visualizzaLista(List<Persona> listaPersona) {
-		for (Persona person : listaPersona) {
+	public static void visualizzaLista(List<PersonaAgenda> listaPersona) {
+		for (PersonaAgenda person : listaPersona) {
 			System.out.println(person);
 		}
 	}
 
-	public static void stampaListaAlfabeticaNome(List<Persona> listaPersona) {
+	public static void stampaListaAlfabeticaNome(List<PersonaAgenda> listaPersona) {
 
-		Collections.sort(listaPersona, Persona.COMPARE_BY_NOME);
+		Collections.sort(listaPersona, PersonaAgenda.COMPARE_BY_NOME);
 		System.out.println("-------------Ordinata per Nome------------");
-		for (Persona persona : listaPersona) {
+		for (PersonaAgenda persona : listaPersona) {
 			System.out.println(persona);
 
 		}
 
 	}
 
-	public static void stampaListaAlfabeticaCognome(List<Persona> listaPersona) {
+	public static void stampaListaAlfabeticaCognome(List<PersonaAgenda> listaPersona) {
 
-		Collections.sort(listaPersona, Persona.COMPARE_BY_COGNOME);
+		Collections.sort(listaPersona, PersonaAgenda.COMPARE_BY_COGNOME);
 		System.out.println("-------------Ordinata per Cognome------------");
-		for (Persona persona : listaPersona) {
+		for (PersonaAgenda persona : listaPersona) {
 			System.out.println(persona);
 		}
 	}
 
-	public static void ricercaTelefono(List<Persona> listaPersona) {
+	public static void ricercaTelefono(List<PersonaAgenda> listaPersona) {
 		System.out.println("\nInserisci il numero di telefono da cercare");
 		Scanner sceltaa = new Scanner(System.in);
 		String ssceltaa = sceltaa.nextLine();
-		for (Persona persona : listaPersona) {
+		for (PersonaAgenda persona : listaPersona) {
 			if (persona.getNumeroTelefono() != null && persona.getNumeroTelefono().equals(ssceltaa)) {
 
 				System.out.println(persona);

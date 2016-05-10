@@ -20,14 +20,14 @@ import java.io.IOException;
 	 */
 	public class LetturaScrittura {
 
-		public static List<Persona> recuperaListaOggetti(String filePath) throws FileNotFoundException, ClassNotFoundException, IOException {
-			List<Persona> listaPersonee = new ArrayList<Persona>();
+		public static List<PersonaAgenda> recuperaListaOggetti(String filePath) throws FileNotFoundException, ClassNotFoundException, IOException {
+			List<PersonaAgenda> listaPersonee = new ArrayList<PersonaAgenda>();
 			File fileSource = new File("agendinalucaulizi.jjj");
 			FileInputStream inputStream = new FileInputStream(fileSource);
 			ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
-			Persona readObject;
+			PersonaAgenda readObject;
 			try {
-				while ((readObject = (Persona) objectInputStream.readObject()) != null) {
+				while ((readObject = (PersonaAgenda) objectInputStream.readObject()) != null) {
 
 					listaPersonee.add(readObject);
 				}
@@ -47,11 +47,11 @@ import java.io.IOException;
 		}
 		
 		
-		public static boolean salvaListaOggetti(String filePath, List<Persona> listaPersonee) throws IOException {
+		public static boolean salvaListaOggetti(String filePath, List<PersonaAgenda> listaPersonee) throws IOException {
 			File fileSource = new File(filePath);
 			FileOutputStream fileOutputStream = new FileOutputStream(fileSource);
 			ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-			for (Persona itemSerializable : listaPersonee) {
+			for (PersonaAgenda itemSerializable : listaPersonee) {
 				objectOutputStream.writeObject(itemSerializable);
 			}
 			objectOutputStream.flush();
