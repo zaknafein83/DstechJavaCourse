@@ -29,8 +29,8 @@ public class ConnessioneDatabaseProperties {
 		try {
 
 			Class.forName(propertiesManagement.getDBDriver());
-
 		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
 			throw new Exception(e.getMessage());
 		}
 
@@ -41,7 +41,9 @@ public class ConnessioneDatabaseProperties {
 					propertiesManagement.getDBUsername(), 
 					propertiesManagement.getDBPassword());
 
+			System.out.println("Connessione effettuata");
 		} catch (SQLException e) {
+			e.printStackTrace();
 			throw new Exception(e.getMessage());
 		}
 
