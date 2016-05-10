@@ -1,13 +1,15 @@
-package org.dstech.lulizi.dbms;
+
+package org.dstech.smastro.EstrazioniDiverlotto;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 
-import org.dstech.dbms.utility.UtilityConnection;
 
-public class TestConnessione { //verifica connessione stabilita al db
+public class JDBCConnectionTest {
+	private static void testConnection()  throws SQLException {
+		PropertiesManagment proper=new PropertiesManagment();
 
-	public static void main(String[] argv) {
+		Connection dbConnection = null;
 
 		try {
 
@@ -19,14 +21,8 @@ public class TestConnessione { //verifica connessione stabilita al db
 
 		}
 
-	}
-
-	private static void testConnection()  throws SQLException {
-
-		Connection dbConnection = null;
-
 		try {
-			dbConnection = UtilityConnection.getDBConnection();
+			dbConnection = proper.getDBConnection();
 			System.out.println("Connessione stabilita con successo");
 
 		} catch (Exception e) {
@@ -39,7 +35,7 @@ public class TestConnessione { //verifica connessione stabilita al db
 			}
 
 		}
-		
-	}
+	}	
+	
 
-}
+

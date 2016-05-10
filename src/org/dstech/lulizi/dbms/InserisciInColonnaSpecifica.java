@@ -6,7 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import org.dstech.dbms.utility.DBUtilityConnection;
+import org.dstech.dbms.utility.UtilityConnection;
 
 /**
  *
@@ -36,7 +36,7 @@ public class InserisciInColonnaSpecifica {
 		String inserisciInColonna = "INSERT INTO UTENTE (professione)"+
 				"VALUES (?)";
 		try {
-			dbConnection = DBUtilityConnection.getDBConnection();
+			dbConnection = UtilityConnection.getDBConnection();
 			preparedStatement = dbConnection.prepareStatement(inserisciInColonna);
 			preparedStatement.setString(1, "Operaio");  
 						

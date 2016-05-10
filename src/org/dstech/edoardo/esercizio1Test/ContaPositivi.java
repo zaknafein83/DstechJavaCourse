@@ -1,4 +1,4 @@
-package org.dstech.edoardo.esercizio1Test;
+/*package org.dstech.edoardo.esercizio1Test;
 
 import java.util.Scanner;
 
@@ -29,4 +29,4 @@ class ContaPositivi {
         System.out.print("La sequenza contiene ");
         System.out.print(positivi);
     }
-}
+}*/

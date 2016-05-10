@@ -3,17 +3,10 @@
  */
 package org.dstech.edoardo.Esercizio2Test;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
-import org.dstech.fsisca.GestioneScuola.Classe;
-import org.dstech.fsisca.GestioneScuola.GestioneArchivioClasse;
-import org.dstech.fsisca.GestioneScuola.Registro;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 /**
  * @author edoardopierguidi
@@ -21,50 +14,49 @@ import org.dstech.fsisca.GestioneScuola.Registro;
  */
 public class Lottomatica {
 	
-public static void main(String[] args) throws IOException, ParseException, ClassNotFoundException {
+	private Date dataEstrazione;
 	
-	public void numeriCasulai() {
+	private List <Integer> numeriEstratti = new ArrayList <Integer>();
+	
+	public Lottomatica(Date dataEstrazione) {
 		
-		int a[] = new int [90];
-
-		for ( int i = 1; i <= a.length; i++ )
+		this.dataEstrazione = dataEstrazione; 
+		
+		while(numeriEstratti.size()== 5){
 			
-		a[i-1]=i;
-	
-	int num;
-	for ( int i=0; i < a.length; i++ ){ 
-	num = ( int ) ( Math.random()* a.length );
-	int hold;
-	hold = a[i];
-	a[i] = a[num];
-	a[num] = hold;
-	}
-	
-	}
-	
-	public static final String DD_MM_YYYY = "dd/mm/yyyy";
-
-	
-	public static String formatoDataEstrazione(Date data) {
-		SimpleDateFormat dateFormat =  new SimpleDateFormat(DD_MM_YYYY);
-		return dateFormat.format(data);
+			int numero = 0;
+			do{
+				numero = (int) ((Math.random()*90)+1);				
+			}while(numeriEstratti.contains(numero));
+			numeriEstratti.add(numero);
+			
+		}
 	}
 
-	
-	public static Date convertiDataInStringa(String data) throws ParseException {
-		SimpleDateFormat dateFormat =  new SimpleDateFormat(DD_MM_YYYY);
-		return dateFormat.parse(data);
+	public Date getDataEstrazione() {
+		return dataEstrazione;
 	}
-		
-	public static boolean salvaEstrazione(int a[], String data) throws IOException {
-		File fileSource = new File(                                                       );
-		FileOutputStream fileOutputStream = new FileOutputStream(fileSource);
-		ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-		objectOutputStream.writeObject(                                                       );
-		objectOutputStream.flush();
-		objectOutputStream.close();
-		fileOutputStream.close();
-		return true;
 
+	public void setDataEstrazione(Date dataEstrazione) {
+		this.dataEstrazione = dataEstrazione;
 	}
-}
+
+	@Override
+	public String toString() {
+		return "Estrazione del "+dataEstrazione+"/n"+numeriEstratti.get(0)+" "+numeriEstratti.get(1)+" "+numeriEstratti.get(2)+" "+numeriEstratti.get(3)+" "+numeriEstratti.get(4)+" ";
+	}
+
+	public List<Integer> getNumeriEstratti() {
+		return numeriEstratti;
+	}
+
+	public void setNumeriEstratti(List<Integer> numeriEstratti) {
+		this.numeriEstratti = numeriEstratti;
+	}
+	
+	
+	
+	
+	
+	
+			}

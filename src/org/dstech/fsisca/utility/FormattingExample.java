@@ -12,7 +12,6 @@
  */
 package org.dstech.fsisca.utility;
 
-import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -25,7 +24,24 @@ import java.util.Scanner;
 public class FormattingExample {
 	
 	public static void main(String[] args) throws ParseException {
-		
+		formatDate();
+		formatString();
+	}
+
+	/**
+	 * 
+	 */
+	private static void formatString() {
+		// TODO Auto-generated method stub
+		String next = "Ciao a tutti da %s";
+		System.out.println("Inserisci il tuo nome: ");
+		Scanner scanner = new Scanner (System.in);
+		String nome = scanner.next();
+		next = String.format(next, nome);
+		System.out.println(next);
+	}
+
+	private static void formatDate() throws ParseException {
 		Scanner scanner = new Scanner (System.in);
 		System.out.println("Inserisci una data nel formato dd/mm/yyyy");
 		SimpleDateFormat dateFormat =  new SimpleDateFormat("dd/mm/yyyy");
@@ -33,19 +49,6 @@ public class FormattingExample {
 		Date parse = dateFormat.parse(data);
 		
 		System.out.println("la data inserita è: " + parse);
-//		
-//		Date newDate = new Date();
-//		
-//		System.out.println(newDate);
-//		System.out.println(dateFormat.format(newDate));
-//		
-//		DecimalFormat decimalFormat = new DecimalFormat("#0.00");
-//		double value = 23123123.12313521;
-//		
-//		System.out.println(value);
-//		System.out.println(decimalFormat.format(value));
-//		
-		
 	}
 
 }
