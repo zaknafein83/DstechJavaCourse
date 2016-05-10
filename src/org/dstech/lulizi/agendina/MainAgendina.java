@@ -29,10 +29,10 @@ public class MainAgendina {
 		
 		
 		
-		  Persona persona;
-		    persona = new Persona();
-		    Persona p = persona;
-		    List<Persona> listaPersona = new ArrayList<Persona>();
+		  PersonaAgenda persona;
+		    persona = new PersonaAgenda();
+		    PersonaAgenda p = persona;
+		    List<PersonaAgenda> listaPersona = new ArrayList<PersonaAgenda>();
 		    
 		    
 
