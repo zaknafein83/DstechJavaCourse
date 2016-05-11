@@ -1,48 +1,40 @@
 /**
  * 
  */
-package org.dstech.alejandro.scuola;
+package org.dstech.alejandro.esercizi;
 
 import java.io.IOException;
-import java.util.Date;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+
+import org.dstech.alejandro.esercizi.Estrazione;
+import org.dstech.alejandro.utility.Menu;
 
 /**
  * @author Alejandro
  *
  */
-public class Main {
+public class Manager {
 
 	/**
 	 * @param args
-	 * @throws IOException 
 	 */
-	public static void main(String[] args) throws IOException {
-		// TODO Auto-generated method stub
-		menu();
-	}
+
 	public static void showMenu() {
 		// TODO Auto-generated method stub
 		System.out.println("################################");
 		System.out.println("M E N U :");
 		System.out.println("################################");
 		System.out.println("0 - Esci");
-		System.out.println("1 - Aggiungi uno studente a una classe");
-		System.out.println("2 - Fai l'appello");
-		System.out.println("3 - Stampa gli alunni della classe");
-		System.out.println("4 - Stampa le presenze di una data");
-		System.out.println("5 - Salva dati");
+		System.out.println("1 - Nuova estrazione");
+		System.out.println("2 - Stampa estrazione");
+		System.out.println("3 - Salva estrazioni");
 		System.out.println("################################");
 
 	}
 
 	public static void menu() throws IOException {
-		Date data = new Date();
 		int choice = 9;
-		Classe c = new Classe();
-		Registro r = new Registro();
-		
 		@SuppressWarnings("resource")
 		Scanner scanner = new Scanner(System.in);
 
@@ -52,20 +44,13 @@ public class Main {
 				choice = scanner.nextInt();
 				switch (choice) {
 				case 1:
-					c.addStudente();
+					Estrazione.addEstrazione();
 					break;
 				case 2:
-					r.appello(c, data);
+					Estrazione.stampListEstrazioni();
 					break;
 				case 3:
-					System.out.println(c.getListaStudenti());
-					break;
-				case 4:
-					System.out.println(r.getPresenze(data));
-					break;
-				case 5:
-					c.save();
-					r.save();
+					Estrazione.salvaEstrazioni();
 					break;
 				}
 
@@ -77,8 +62,7 @@ public class Main {
 
 			}
 		}
-	}
 
-	
+	}
 
 }

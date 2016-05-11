@@ -3,16 +3,16 @@ package org.dstech.edoardo.Scuola;
 import java.util.ArrayList;
 
 public class Classe {
-	
-	//Creo gli elementi che compongono la classe
-	
+
+	// Creo gli elementi che compongono la classe
+
 	private ArrayList<Studente> listaStudendi;
 	private String docenteUno;
 	private String docenteDue;
 	private Registro registro;
-	
-	//Creo il costruttore
-	
+
+	// Creo il costruttore
+
 	public Classe(ArrayList<Studente> listaStudente, String docenteUno, String docenteDue, Registro registro) {
 		super();
 		this.listaStudendi = listaStudente;
@@ -20,16 +20,15 @@ public class Classe {
 		this.docenteDue = docenteDue;
 		this.registro = registro;
 	}
-	
-	
-		public Classe() {
+
+	public Classe() {
 		super();
 		this.listaStudendi = new ArrayList<Studente>();
 	}
 
-	
-	//Genero i Get e i set degli elementi passandogli gli elementi del costruttore
-	
+	// Genero i Get e i set degli elementi passandogli gli elementi del
+	// costruttore
+
 	public ArrayList<Studente> getListaStudendi() {
 		return listaStudendi;
 	}
@@ -37,7 +36,7 @@ public class Classe {
 	public void setLista_studenti(ArrayList<Studente> listaStudente) {
 		this.listaStudendi = listaStudente;
 	}
-	
+
 	public String DocenteUno() {
 		return docenteUno;
 	}
@@ -61,5 +60,5 @@ public class Classe {
 	public void setRegistro(Registro registro) {
 		this.registro = registro;
 	}
-	
+
 }

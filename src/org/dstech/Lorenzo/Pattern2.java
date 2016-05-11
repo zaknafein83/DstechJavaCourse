@@ -20,16 +20,16 @@ public class Pattern2 {
 		Matcher matcher = pattern.matcher(testo);
 		Matcher matcher1 = pattern1.matcher(testo);
 
-//		while (matcher.find()) {
-//			System.out.println("è un numero di telefono: " + testo);
-//		}
-//
-//		while (matcher1.find()) {
-//			System.out.println("è una email: " + testo);
-//		}
-//		if (!(matcher.find() | matcher1.find())) {
-//			System.out.println("è altro");
-//		}
+		// while (matcher.find()) {
+		// System.out.println("è un numero di telefono: " + testo);
+		// }
+		//
+		// while (matcher1.find()) {
+		// System.out.println("è una email: " + testo);
+		// }
+		// if (!(matcher.find() | matcher1.find())) {
+		// System.out.println("è altro");
+		// }
 
 		if (matcher.find()) {
 			System.out.println("è un numero di telefono: " + testo);
@@ -37,11 +37,7 @@ public class Pattern2 {
 
 		else if (matcher1.find()) {
 			System.out.println("è una email: " + testo);
-		}
-		else 
+		} else
 			System.out.println("è altro");
-		}
 	}
-	
-
-
+}

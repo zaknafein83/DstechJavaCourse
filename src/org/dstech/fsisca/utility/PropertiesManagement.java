@@ -20,7 +20,6 @@ import java.net.URL;
 import java.util.Properties;
 import java.util.logging.Logger;
 
-
 /**
  * @author franksisca
  *
@@ -38,7 +37,8 @@ public class PropertiesManagement {
 		try {
 			prop = new Properties();
 			System.out.println("Load properties...");
-			InputStream in = PropertiesManagement.class.getClassLoader().getResourceAsStream("resources/application.properties");
+			InputStream in = PropertiesManagement.class.getClassLoader()
+					.getResourceAsStream("resources/application.properties");
 			prop.load(in);
 			in.close();
 			System.out.println("Properties has been loaded!");
@@ -46,7 +46,6 @@ public class PropertiesManagement {
 			exp.printStackTrace();
 		}
 	}
-
 
 	public String getDBConnection() {
 		System.out.println("Trying to load " + Constants.DB_CONNECTION + "...");
@@ -58,6 +57,7 @@ public class PropertiesManagement {
 			return "NO_DB_CONNECTION";
 		}
 	}
+
 	public String getDBUsername() {
 		System.out.println("Trying to load " + Constants.DB_USERNAME + "...");
 		if (prop.containsKey(Constants.DB_USERNAME)) {
@@ -68,8 +68,9 @@ public class PropertiesManagement {
 			return "root";
 		}
 	}
+
 	public String getDBPassword() {
-		System.out.println("Trying to load " + Constants.DB_PASSWORD+ "...");
+		System.out.println("Trying to load " + Constants.DB_PASSWORD + "...");
 		if (prop.containsKey(Constants.DB_PASSWORD)) {
 			System.out.println(Constants.DB_PASSWORD + " found!");
 			return prop.getProperty(Constants.DB_PASSWORD);
@@ -78,6 +79,7 @@ public class PropertiesManagement {
 			return "root";
 		}
 	}
+
 	public String getDBDriver() {
 		System.out.println("Trying to load " + Constants.DB_DRIVER + "...");
 		if (prop.containsKey(Constants.DB_DRIVER)) {
@@ -88,6 +90,5 @@ public class PropertiesManagement {
 			return "com.mysql.jdbc.Driver";
 		}
 	}
-
 
 }

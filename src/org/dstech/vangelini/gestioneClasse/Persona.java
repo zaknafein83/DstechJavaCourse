@@ -7,23 +7,23 @@ public abstract class Persona {
 	private String cognome;
 	private String codFiscale;
 	private Date data;
-	
-	public String getNome(){
+
+	public String getNome() {
 		return nome;
 	}
-	
-	public String getCognome(){
+
+	public String getCognome() {
 		return cognome;
 	}
-	
-	public String getCodFiscale(){
+
+	public String getCodFiscale() {
 		return codFiscale;
 	}
-	
-	public Date getDataNascita(){
+
+	public Date getDataNascita() {
 		return data;
 	}
-	
+
 	public abstract String getMatricola();
 
 	public Date getData() {
@@ -45,5 +45,5 @@ public abstract class Persona {
 	public void setCodFiscale(String codFiscale) {
 		this.codFiscale = codFiscale;
 	}
-	
+
 }
