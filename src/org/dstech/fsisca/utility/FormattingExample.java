@@ -22,7 +22,7 @@ import java.util.Scanner;
  *
  */
 public class FormattingExample {
-	
+
 	public static void main(String[] args) throws ParseException {
 		formatDate();
 		formatString();
@@ -35,19 +35,19 @@ public class FormattingExample {
 		// TODO Auto-generated method stub
 		String next = "Ciao a tutti da %s";
 		System.out.println("Inserisci il tuo nome: ");
-		Scanner scanner = new Scanner (System.in);
+		Scanner scanner = new Scanner(System.in);
 		String nome = scanner.next();
 		next = String.format(next, nome);
 		System.out.println(next);
 	}
 
 	private static void formatDate() throws ParseException {
-		Scanner scanner = new Scanner (System.in);
+		Scanner scanner = new Scanner(System.in);
 		System.out.println("Inserisci una data nel formato dd/mm/yyyy");
-		SimpleDateFormat dateFormat =  new SimpleDateFormat("dd/mm/yyyy");
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/mm/yyyy");
 		String data = scanner.next();
 		Date parse = dateFormat.parse(data);
-		
+
 		System.out.println("la data inserita è: " + parse);
 	}
 

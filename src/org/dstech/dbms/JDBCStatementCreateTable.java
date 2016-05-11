@@ -29,21 +29,40 @@ public class JDBCStatementCreateTable {
 
 		Connection dbConnection = null;
 		Statement statement = null;
-		
-		 String createTableSQL = "CREATE TABLE REGISTRATION " +
-                 "(ID INTEGER NOT NULL AUTO_INCREMENT, " + //id necessariamente valorizzato e autoincrementato
-                 " NOME VARCHAR(255), " + 
-                 " COGNOME VARCHAR(255), " + 
-                 " ETA INTEGER, " + 
-                 " PRIMARY KEY ( id ))";		//chiave primaria ID, ciè la prima colonna ID è la chiave primaria, non puo essere duplicata sulla tabella
+
+		String createTableSQL = "CREATE TABLE REGISTRATION " + "(ID INTEGER NOT NULL AUTO_INCREMENT, " + // id
+																											// necessariamente
+																											// valorizzato
+																											// e
+																											// autoincrementato
+				" NOME VARCHAR(255), " + " COGNOME VARCHAR(255), " + " ETA INTEGER, " + " PRIMARY KEY ( id ))"; // chiave
+																												// primaria
+																												// ID,
+																												// ciè
+																												// la
+																												// prima
+																												// colonna
+																												// ID
+																												// è
+																												// la
+																												// chiave
+																												// primaria,
+																												// non
+																												// puo
+																												// essere
+																												// duplicata
+																												// sulla
+																												// tabella
 
 		try {
 			dbConnection = UtilityConnection.getDBConnection();
-			statement = dbConnection.createStatement(); //statement è istruzione che viene inviata al database
+			statement = dbConnection.createStatement(); // statement è
+														// istruzione che viene
+														// inviata al database
 
 			System.out.println(createTableSQL);
 
-			statement.execute(createTableSQL); //invia esecuzione al db
+			statement.execute(createTableSQL); // invia esecuzione al db
 
 			System.out.println("Tabella \"REGISTRATION\" creata con successo!");
 

@@ -1,4 +1,4 @@
-package org.dstech.lulizi.dbms;
+package org.dstech.alejandro.dbms;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,9 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import org.dstech.dbms.utility.UtilityConnection;
+import org.dstech.dbms.utility.DBUtilityConnection;
 
-public class Select {
+public class JDBCPreparedStatementSelect {
 	private static final Connection con = null;
 
 	public static void main(String[] argv) throws Exception {
@@ -30,30 +30,46 @@ public class Select {
 		Connection dbConnection = null;
 		Statement statement = null;
 
-		String selectTableSQL = "SELECT * FROM UTENTE";
+		String selectTableSQL = "SELECT * FROM REGISTRATION ";
+				
+				
 
 		try {
-			dbConnection = UtilityConnection.getDBConnection();
+			dbConnection = DBUtilityConnection.getDBConnection();
 			statement = dbConnection.prepareStatement(selectTableSQL);
 
+						
+			
+
 			// execute insert SQL stetement
-
+			
+			
+			  
 			ResultSet rs = statement.executeQuery(selectTableSQL);
+			
+			while (rs.next())
+		      {
+		        int ID=rs.getInt("ID");
+		        String Nome= rs.getString("NOME");
+		        String Cognome= rs.getString("COGNOME");
+		        int Eta= rs.getInt("ETA");
+		         
+		        
+		       System.out.println(ID + " "+ Nome + " " + Cognome + " " + Eta);
+		       
+		       
+		      }
+		      statement.close();
+		  
+	
+	
+			
 
-			while (rs.next()) {
-				int ID = rs.getInt("ID");
-				String Nome = rs.getString("NOME");
-				String Cognome = rs.getString("COGNOME");
-				int Eta = rs.getInt("ETA");
-
-				System.out.println(ID + " " + Nome + " " + Cognome + " " + Eta);
-
-			}
-			statement.close();
-
+			
 		} catch (SQLException e) {
 
 			System.err.println(e.getMessage());
+			
 
 		} finally {
 

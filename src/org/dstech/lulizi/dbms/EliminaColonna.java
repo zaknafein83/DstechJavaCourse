@@ -26,16 +26,14 @@ public class EliminaColonna {
 		Connection dbConnection = null;
 		PreparedStatement preparedStatement = null;
 
-		String cancellaColonna = "ALTER TABLE UTENTE"
-			    + "DROP COLUMN dateCreated";
+		String cancellaColonna = "ALTER TABLE UTENTE" + "DROP COLUMN dateCreated";
 
 		try {
 			dbConnection = UtilityConnection.getDBConnection();
 			preparedStatement = dbConnection.prepareStatement(cancellaColonna);
 
-			
-			preparedStatement.execute(cancellaColonna); 
-			
+			preparedStatement.execute(cancellaColonna);
+
 			System.out.println("Colonna eliminata nella tabella UTENTE!");
 
 		} catch (SQLException e) {

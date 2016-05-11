@@ -10,12 +10,12 @@ package org.dstech.fsisca;
 public class AbstractPatternExample {
 	public static void main(String[] args) {
 		GUIFactory factory = GUIFactory.getFactory();
-		if(factory instanceof OSXFactory){
-System.out.println("Sono su mac");			
+		if (factory instanceof OSXFactory) {
+			System.out.println("Sono su mac");
 		}
 		if (factory instanceof WinFactory) {
-			System.out.println("Sono su windows");			
-			
+			System.out.println("Sono su windows");
+
 		}
 	}
 	// L'output sarà:
