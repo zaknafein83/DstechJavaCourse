@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import org.dstech.dbms.utility.DBUtilityConnection;
+import org.dstech.dbms.utility.UtilityConnection;
 
 /**
  *
@@ -40,7 +40,7 @@ public class CreaTabella {
                 " PRIMARY KEY ( id ))";		//chiave primaria ID, ciè la prima colonna ID è la chiave primaria, non puo essere duplicata sulla tabella
 
 		try {
-			dbConnection = DBUtilityConnection.getDBConnection();
+			dbConnection = UtilityConnection.getDBConnection();
 			statement = dbConnection.createStatement(); //statement è istruzione che viene inviata al database
 
 			System.out.println(createTableSQL);

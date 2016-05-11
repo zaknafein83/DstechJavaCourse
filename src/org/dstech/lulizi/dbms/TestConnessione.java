@@ -3,7 +3,7 @@ package org.dstech.lulizi.dbms;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-import org.dstech.dbms.utility.DBUtilityConnection;
+import org.dstech.dbms.utility.UtilityConnection;
 
 public class TestConnessione { //verifica connessione stabilita al db
 
@@ -26,7 +26,7 @@ public class TestConnessione { //verifica connessione stabilita al db
 		Connection dbConnection = null;
 
 		try {
-			dbConnection = DBUtilityConnection.getDBConnection();
+			dbConnection = UtilityConnection.getDBConnection();
 			System.out.println("Connessione stabilita con successo");
 
 		} catch (Exception e) {

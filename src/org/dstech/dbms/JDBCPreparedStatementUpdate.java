@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import org.dstech.dbms.utility.DBUtilityConnection;
+import org.dstech.dbms.utility.UtilityConnection;
 
 public class JDBCPreparedStatementUpdate {
 	public static void main(String[] argv) throws Exception {
@@ -31,7 +31,7 @@ public class JDBCPreparedStatementUpdate {
 				+ " WHERE ID = ?";
 
 		try {
-			dbConnection = DBUtilityConnection.getDBConnection();
+			dbConnection = UtilityConnection.getDBConnection();
 			preparedStatement = dbConnection.prepareStatement(insertTableSQL);
 
 			preparedStatement.setString(1, "ciao");

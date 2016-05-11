@@ -1,36 +1,34 @@
 /**
  * 
  */
-package org.dstech.fsisca.dbms;
+package org.dstech.edoardo.diverlotto;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.Properties;
-
-import org.dstech.dbms.utility.Variabili;
-import org.dstech.fsisca.utility.PropertiesManagement;
 
 /**
- * @author franksisca
+ * @author edoardo
  *
  */
-public class ConnessioneDatabaseProperties {
 
+public class ConnessioneDB {
+	
 	/**
 	 * @param args
 	 * @throws Exceptùion
 	 */
-	public static void main(String[] args) throws Exception {
-		PropertiesManagement propertiesManagement = new PropertiesManagement();
+	public ConnessioneDB() throws Exception {
+		
+		PropertiesManagment propertiesManagement = new PropertiesManagment();
 
 		Connection dbConnection = null;
 
 		try {
 
 			Class.forName(propertiesManagement.getDBDriver());
+
 		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
 			throw new Exception(e.getMessage());
 		}
 
@@ -41,12 +39,13 @@ public class ConnessioneDatabaseProperties {
 					propertiesManagement.getDBUsername(), 
 					propertiesManagement.getDBPassword());
 
-			System.out.println("Connessione effettuata");
 		} catch (SQLException e) {
-			e.printStackTrace();
 			throw new Exception(e.getMessage());
 		}
+		
+		
 
 	}
+
 
 }

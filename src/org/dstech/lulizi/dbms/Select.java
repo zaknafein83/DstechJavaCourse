@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import org.dstech.dbms.utility.DBUtilityConnection;
+import org.dstech.dbms.utility.UtilityConnection;
 
 public class Select {
 	private static final Connection con = null;
@@ -35,7 +35,7 @@ public class Select {
 				
 
 		try {
-			dbConnection = DBUtilityConnection.getDBConnection();
+			dbConnection = UtilityConnection.getDBConnection();
 			statement = dbConnection.prepareStatement(selectTableSQL);
 
 						

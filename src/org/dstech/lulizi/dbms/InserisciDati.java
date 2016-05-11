@@ -6,7 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import org.dstech.dbms.utility.DBUtilityConnection;
+import org.dstech.dbms.utility.UtilityConnection;
 
 /**
  *
@@ -38,7 +38,7 @@ public class InserisciDati {
 				+ "(default,?,?,?,?,?)"; //???? punti interrogativi x definire valori variabili. Default il primo xche si autoincrementa
 
 		try {
-			dbConnection = DBUtilityConnection.getDBConnection();
+			dbConnection = UtilityConnection.getDBConnection();
 			preparedStatement = dbConnection.prepareStatement(insertTableSQL);
 
 			preparedStatement.setString(1, "Luca");  //il numero è la posizione riferita al punto interrogativo sopra, quindi riferito a nome
