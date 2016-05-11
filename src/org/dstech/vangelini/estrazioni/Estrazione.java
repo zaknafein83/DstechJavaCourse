@@ -12,6 +12,7 @@ import java.util.List;
  * @author Valerio
  *
  */
+@SuppressWarnings("serial")
 public class Estrazione implements Serializable{
 	private Date data_estrazione;
 	private List<Integer> numeri_estratti = new ArrayList<Integer>();

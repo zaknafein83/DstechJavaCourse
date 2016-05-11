@@ -3,29 +3,50 @@
  */
 package org.dstech.alejandro.scuola;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
- * @author Alejandro
+ * @author franksisca
  *
  */
-public class Classe implements Serializable {
+public class Classe implements Serializable{
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private List<Studente> listaStudenti = new ArrayList<Studente>();
-	Docente a;
-	Docente b;
+	private List<Studente> listaStudenti;
+	private List<Docente> listaDocenti;
+	private Registro registro;
+	
+	/**
+	 * 
+	 */
+	public Classe() {
+		// TODO Auto-generated constructor stub
+		this.listaStudenti = new ArrayList<Studente>();
+		this.listaDocenti = new ArrayList<Docente>();
+		this.registro = new Registro();
+	}
+	/**
+	 * @return the registro
+	 */
+	public Registro getRegistro() {
+		return registro;
+	}
+	
+	/**
+	 * @param registro the registro to set
+	 */
+	public void setRegistro(Registro registro) {
+		this.registro = registro;
+	}
 
 	public List<Studente> getListaStudenti() {
 		return listaStudenti;
@@ -35,69 +56,42 @@ public class Classe implements Serializable {
 		this.listaStudenti = listaStudenti;
 	}
 
-	public Docente getA() {
-		return a;
+	public List<Docente> getListaDocenti() {
+		return listaDocenti;
 	}
 
-	public void setA(Docente a) {
-		this.a = a;
+	public void setListaDocenti(List<Docente> listaDocenti) {
+		this.listaDocenti = listaDocenti;
 	}
 
-	public Docente getB() {
-		return b;
+	public boolean aggiungiStudente(Studente studente) {
+		return this.listaStudenti.add(studente);
 	}
 
-	public void setB(Docente b) {
-		this.b = b;
+	public boolean aggiungiDocente(Docente docente) {
+		return this.listaDocenti.add(docente);
+	}
+	
+	public void appello(Date data){
+		int docente = (int) (Math.random() * this.getListaDocenti().size());
+		System.out.println("È stato scelto il docente: " + this.getListaDocenti().get(docente) + " per fare l'appello nella data " + Utils.formatDateAppello(data));
+		for (Studente studente : listaStudenti) {
+			System.out.println("Lo studente " + studente.getNome() + " " + studente.getCognome() + " è presente? [Y/N]: ");
+			boolean presente = readBoolean();
+			Rilevazione rilevazione = new Rilevazione(studente, presente, data);
+			registro.aggiungiRilevazione(rilevazione );
+		}
 	}
 
-	public void addStudente() {
-
-		Studente p = new Studente();
-
-		@SuppressWarnings("resource")
+	/**
+	 * @return
+	 */
+	@SuppressWarnings("resource")
+	private boolean readBoolean() {
 		Scanner scanner = new Scanner(System.in);
-		System.out.println("Inserisci il nome");
-		p.setNome(scanner.nextLine());
-		System.out.println("Inserisci il cognome");
-		p.setCognome(scanner.nextLine());
-		System.out.println("Inserisci il codice fiscale");
-		p.setCodfiscale(scanner.nextLine());
-		// System.out.println("Inserisci la data di nascita");
-		// p.setDataNascita(scanner.nextLine());
-
-		listaStudenti.add(p);
+		String next = scanner.next();
+		Pattern pattern = Pattern.compile("y|Y|S|s");
+		Matcher matcher = pattern.matcher(next.substring(0, 1));
+		return matcher.find();
 	}
-
-	public void save() throws IOException {
-		try {
-			FileOutputStream fout = new FileOutputStream(
-					"C:\\Users\\Alejandro\\git\\DstechJavaCourse\\src\\org\\dstech\\alejandro\\scuola\\classe.jjj");
-			ObjectOutputStream oos = new ObjectOutputStream(fout);
-			oos.writeObject(this);
-			oos.close();
-			System.out.println("Done");
-
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		}
-	}
-
-	public Classe read() {
-
-		try {
-
-			FileInputStream fin = new FileInputStream("C:\\Users\\Alejandro\\git\\DstechJavaCourse\\src\\org\\dstech\\alejandro\\scuola\\classe.jjj");
-			ObjectInputStream ois = new ObjectInputStream(fin);
-			Classe classe = (Classe) ois.readObject();
-			ois.close();
-
-			return classe;
-
-		} catch (Exception ex) {
-			ex.printStackTrace();
-			return null;
-		}
-	}
-
 }

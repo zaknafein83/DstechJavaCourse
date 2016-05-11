@@ -7,9 +7,8 @@ package org.dstech.alejandro.utility;
  * @author Alejandro
  *
  */
-public interface Menu {
+public interface Savable {
 	
-	public void  showMenu();
+	public void save();
 	
-	public void menu();
 }
