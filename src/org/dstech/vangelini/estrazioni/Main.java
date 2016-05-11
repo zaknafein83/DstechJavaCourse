@@ -29,6 +29,7 @@ public class Main {
 			System.out.println("Nessuna estrazione trovata, è stato creato un nuovo file estrazioni.jjj");
 			lista_estrazioni = new ArrayList<Estrazione>();
 		}
+		@SuppressWarnings("resource")
 		Scanner io = new Scanner(System.in);
 		int risposta = 0;
 		do{
@@ -93,6 +94,7 @@ public class Main {
 		System.out.println("Programma terminato!");
 	}
 
+	@SuppressWarnings("resource")
 	public static Estrazione selezionaEstrazione(ArrayList<Estrazione> lista_estrazioni){
 		int i = 0;
 		for(Estrazione estrazione : lista_estrazioni){
