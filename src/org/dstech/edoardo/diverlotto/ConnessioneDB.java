@@ -19,16 +19,18 @@ public class ConnessioneDB {
 	 * @return 
 	 * @throws Exceptùion
 	 */
-	public static void connessioneDB() throws Exception {
-		PropertiesManagment propertiesManagement = new PropertiesManagment();
-
+	public static Connection getconnessioneDB() throws Exception {
+		
 		Connection dbConnection = null;
+		
+		PropertiesManagment propertiesManagement = new PropertiesManagment();
 
 		try {
 
 			Class.forName(propertiesManagement.getDBDriver());
 
 		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
 			throw new Exception(e.getMessage());
 		}
 
@@ -38,16 +40,13 @@ public class ConnessioneDB {
 					propertiesManagement.getDBConnection(), 
 					propertiesManagement.getDBUsername(), 
 					propertiesManagement.getDBPassword());
+			
+			return dbConnection;
 
 		} catch (SQLException e) {
 			throw new Exception(e.getMessage());
 		}
 
 	}
-
-	/**
-	 * @return
-	 */
-
 
 }
