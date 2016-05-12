@@ -1,52 +1,25 @@
-/**
- * 
- */
 package org.dstech.edoardo.diverlotto;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-
-/**
- * @author edoardo
- *
- */
 public class ConnessioneDB {
 	
-	/**
-	 * @param args
-	 * @return 
-	 * @throws Exceptùion
-	 */
-	public static Connection getconnessioneDB() throws Exception {
-		
+	public static Connection getDBConnection() throws Exception {
 		Connection dbConnection = null;
-		
-		PropertiesManagment propertiesManagement = new PropertiesManagment();
-
+		PropertiesManagement prop = new PropertiesManagement();
 		try {
-
-			Class.forName(propertiesManagement.getDBDriver());
-
+			Class.forName(prop.getDBDriver());
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 			throw new Exception(e.getMessage());
 		}
-
 		try {
-
-			dbConnection = DriverManager.getConnection(
-					propertiesManagement.getDBConnection(), 
-					propertiesManagement.getDBUsername(), 
-					propertiesManagement.getDBPassword());
-			
+			dbConnection = DriverManager.getConnection(prop.getDBConnection(), prop.getDBUsername(), prop.getDBPassword());
 			return dbConnection;
-
 		} catch (SQLException e) {
 			throw new Exception(e.getMessage());
 		}
-
 	}
-
 }

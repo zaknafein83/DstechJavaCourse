@@ -3,14 +3,12 @@ package org.dstech.edoardo.diverlotto;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-import org.dstech.edoardo.diverlotto.ConnessioneDB;
+public class JDBCConnectionTest { 
 
-public class JDBCConnectionTest { //verifica connessione stabilita al db
-
-	public static void ConnectionTest()  throws SQLException {
+	public static void testConnection()  throws SQLException {
 		Connection dbConnection = null;
 		try {
-			dbConnection = ConnessioneDB.getconnessioneDB();
+			dbConnection = ConnessioneDB.getDBConnection();
 			System.out.println("Connessione stabilita con successo");
 		} catch (Exception e) {
 			System.err.println(e.getMessage());

@@ -8,7 +8,7 @@ public class JDBCConnectionTest {
 	public static void testConnection()  throws SQLException {
 		Connection dbConnection = null;
 		try {
-			dbConnection = DBUtilityConnection.getDBConnection();
+			dbConnection = ConnessioneDB.getDBConnection();
 			System.out.println("Connessione stabilita con successo");
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
