@@ -14,7 +14,10 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.InputMismatchException;
 import java.util.List;
+import java.util.Scanner;
 
 public class QueryDB {
 	private static final String CR = "\n";
@@ -24,6 +27,192 @@ public class QueryDB {
 	//private static final Object VAR = " VARCHAR(10) ";
 	private static final Object TIMESTAMP = " DATE ";
 
+	public void scommessa(){
+		//inserire cosa vuoi giocare (ambo, terno, quaderna, cinquina)
+		@SuppressWarnings("resource")
+		Scanner io = new Scanner(System.in);
+		int risposta = 0;
+		do{
+			System.out.println("Scegliere la giocata da effettuare:");
+			System.out.println("1 - Numero estratto(1)");
+			System.out.println("2 - Ambo");
+			System.out.println("3 - Terno");
+			System.out.println("4 - Quaderna");
+			System.out.println("5 - Cinquina");
+			System.out.println("9 - Esci");
+			boolean notInt = true;
+			while(notInt){
+				System.out.println("Inserisci numero operazione da effettuare: ");
+				try{
+					risposta = io.nextInt();
+					notInt = false;
+				} catch(InputMismatchException exp){
+					notInt = true;
+				}
+				io.nextLine();
+			}		
+			switch(risposta){
+				case 1:
+					giocaScommessa(1);
+				break;
+				case 2:
+					giocaScommessa(2);
+				break;
+				case 3:
+					giocaScommessa(3);
+				break;
+				case 4:
+					giocaScommessa(4);
+				break;
+				case 5:
+					giocaScommessa(5);
+				break;
+				case 9:
+					risposta = 9;
+				break;
+				default: 
+					System.out.println("Risposta non valida!");
+				break;
+			}
+		}while(risposta != 9);
+	}
+	
+	private static ArrayList<Integer> selezionaNumeriGiocata(int n){
+		ArrayList<Integer> lista_numeri = new ArrayList<Integer>();
+		System.out.println("Inserire "+n+" numeri:");
+		@SuppressWarnings("resource")
+		Scanner io2 = new Scanner(System.in);
+		int i = 0;
+		while(i < n){
+			System.out.println("Inserire "+(i+1)+"° numero:");
+			try{
+				Integer nuovo_numero = io2.nextInt();
+				if(!lista_numeri.contains(nuovo_numero) && (nuovo_numero > 0 && nuovo_numero <= 90)){
+					lista_numeri.add(nuovo_numero);
+					i++;
+				} else {
+					System.out.println("Numero gia inserito precedentemente o non valido!");
+				}
+			} catch(Exception e){
+				System.out.println("Inserimento non valido!");
+			}
+			io2.nextLine();
+		} 
+		if(lista_numeri.size() == n){
+			return lista_numeri;
+		} else {
+			return null;
+		}
+	}
+	
+	private static void giocaScommessa(int n){
+		ArrayList<Integer> lista_numeri = selezionaNumeriGiocata(n);
+		//memorizzare in una lista le estrazioni fatte su ogni ruota.
+		HashMap<String, Estrazione> lista_estrazioni = new HashMap<String, Estrazione>();
+		QueryDB query = new QueryDB();
+		String[] nome_tabella = null;
+		try {
+			nome_tabella = query.selectTabellaTabelle();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Date data = new Date();
+		for(String tabella : nome_tabella){
+			Estrazione nuova_estrazione = new Estrazione(data);
+			lista_estrazioni.put(tabella, nuova_estrazione);
+		}
+		//controllare la giocata con le estrazioni (Stampa vincita o perdita)	
+		for(String tabella : lista_estrazioni.keySet()){
+			Estrazione verificaEstrazione = lista_estrazioni.get(tabella);
+			List<Integer> numeri_estrazione = verificaEstrazione.getNumeri_estratti();
+			int contatore = 0;
+			for(Integer numero : lista_numeri){
+				if(numeri_estrazione.contains(numero)){
+					contatore++;
+				}
+			}
+			if(contatore == lista_numeri.size()){
+				System.out.println("Su la ruota di '"+tabella+"' - Hai vintoooooo NDIAMOOOOOO!");
+			} else {
+				System.out.println("Su la ruota di '"+tabella+"' - Hai perso! ");
+			}
+			System.out.println("numeri estratti sulla ruota: "+lista_estrazioni.get(tabella).toString());
+			System.out.println("");
+		}
+	}
+	
+	public void numberLate() throws Exception{
+		//numero con maggior ritardo per ogni singola tabella;
+		QueryDB query = new QueryDB();
+		String[] nome_tabella = query.selectTabellaTabelle();
+		int dimensione_tabella_tabelle = nome_tabella.length;
+		Timestamp data;
+		Timestamp data_trovata;
+		for(int i2 = 0; i2 < dimensione_tabella_tabelle; i2++){
+			int numero = 0;
+			data = null;
+			for(int i =  0; i < 90; i++){
+				data_trovata = trovaRitardoNumero((i+1), nome_tabella[i2]); //trova data, dato il numero
+				//System.out.println("confronta numero: "+numero+" - "+data+" con "+(i+1)+" - "+data_trovata);
+				if(i == 0){
+					data = data_trovata;
+					numero = i+1;
+				} else if(data.after(data_trovata)){
+					//System.out.println("Minore!");
+					numero = i+1;
+					data = data_trovata;
+				}
+			}
+			//stampa risultato
+			String data_convert = data.toString();
+			System.out.println("Per la tabella "+nome_tabella[i2]+" il numero piu atteso è: '"+numero+"', che non viene estratto dal: "+data_convert.substring(0, 10)+";");
+		}
+	}
+	
+	private static Timestamp trovaRitardoNumero(int n, String tabella) throws Exception{
+		String condizione_where = " ";
+		condizione_where = condizione_where+"(";
+		for(int i2 = 1; i2 <= 5; i2++){
+			if(i2 != 1){
+				condizione_where = condizione_where+" OR ";
+			}
+			condizione_where = condizione_where+tabella+i2+" = "+n;
+		} 
+		condizione_where = condizione_where+" )";
+		Connection dbConnection = null;
+		Statement statement = null;
+		String query2 = "SELECT ESTRAZ FROM `"+tabella+"` WHERE "+condizione_where+" ORDER BY ESTRAZ DESC LIMIT 1;";
+		//System.out.println(query2);
+		try {
+			dbConnection = DBUtilityConnection.getDBConnection();
+			statement = dbConnection.prepareStatement(query2);
+			ResultSet rs = statement.executeQuery(query2);
+			//stampare data risultato
+			if(rs.next() == true){
+				rs.previous();
+				while (rs.next()){
+					Timestamp data_time_stamp = rs.getTimestamp("ESTRAZ");
+					//String data = data_time_stamp.toString();
+					return data_time_stamp;
+				    //System.out.println("I numeri scelti non vengono estratti sulla ruota "+tabella+" dal: "+data.substring(0, 10));
+			    }
+			} else {
+				return null;
+			}
+		} catch (SQLException e) {
+			System.err.println(e.getMessage());
+		} finally {
+			if (statement != null) {
+				statement.close();
+			}
+			if (dbConnection != null) {
+				dbConnection.close();
+			}
+		}
+		return null;
+	}
+	
 	public boolean verificaRiempimentoTabella() throws Exception{
 		Connection dbConnection = null;
 		Statement statement = null;
@@ -250,7 +439,7 @@ public class QueryDB {
 			}
 		}
 		script.append(");");
-		System.out.println(script);
+		//System.out.println(script);
 		Connection dbConnection = null;
 		Statement statement = null;
 		try {
@@ -273,7 +462,7 @@ public class QueryDB {
 		String[] onlyTableName = Arrays.copyOfRange(splitRow, 2, splitRow.length);
 		ArrayList<String> lista_tabelle = new ArrayList<String>();
 		for (int i = 5; i <= onlyTableName.length; i += 5) {
-			System.out.println("Creazione in corso di: "+onlyTableName[i-5]);
+			//System.out.println("Creazione in corso di: "+onlyTableName[i-5]);
 			String nome = onlyTableName[i-5];
 			String nome_tabella = nome.substring(0, 2);
 			lista_tabelle.add(nome_tabella);
@@ -294,7 +483,7 @@ public class QueryDB {
 			dbConnection = DBUtilityConnection.getDBConnection();
 			statement = dbConnection.createStatement();
 			statement.execute(query);
-			System.out.println("Tabella `tabella_tabelle` creata con successo o già esistente!");
+			//System.out.println("Tabella `tabella_tabelle` creata con successo o già esistente!");
 		} catch (SQLException e) {
 			System.err.println(e.getMessage());
 		} finally {

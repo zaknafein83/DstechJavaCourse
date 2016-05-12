@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.Scanner;
 
 /*
- * Manca ordinamento dei risultati (modifica l'attributo di ESTRAZ da String a Date)
  * Manca case 2 (numero con maggior ritardo per ogni tabella)
  * Manca case 7 (giocata)
  * 
@@ -81,6 +80,7 @@ public class MainDiverlotto {
 				break;
 				case 2:
 					//numero col maggior ritardo di estrazione.
+					query.numberLate();
 				break;
 				case 3:
 					//dati 2 numero verificare per ogni tabella da quanto non vengono estratti
@@ -99,6 +99,7 @@ public class MainDiverlotto {
 					controlloEstrazioni(5);
 				break;
 				case 7:
+					query.scommessa();
 					//scommessa
 				break;
 				case 9:
@@ -155,7 +156,7 @@ public class MainDiverlotto {
 			Connection dbConnection = null;
 			Statement statement = null;
 			String query2 = "SELECT ESTRAZ FROM `"+tabella+"` WHERE "+condizione_where+" ORDER BY ESTRAZ DESC LIMIT 1;";
-			System.out.println(query2);
+			//System.out.println(query2);
 			try {
 				dbConnection = DBUtilityConnection.getDBConnection();
 				statement = dbConnection.prepareStatement(query2);
@@ -170,7 +171,7 @@ public class MainDiverlotto {
 					    System.out.println("I numeri scelti non vengono estratti sulla ruota "+tabella+" dal: "+data.substring(0, 10));
 				    }
 				} else {
-					System.out.println("Combinazione mai uscita!");
+					System.out.println("Combinazione mai uscita sulla ruota: "+tabella);
 				}
 			} catch (SQLException e) {
 				System.err.println(e.getMessage());

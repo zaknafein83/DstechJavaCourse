@@ -9,10 +9,6 @@ import java.util.Date;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-/**
- * @author Valerio
- *
- */
 
 public class Main {
 
