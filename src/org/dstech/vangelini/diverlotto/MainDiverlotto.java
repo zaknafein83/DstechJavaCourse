@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
@@ -164,8 +165,9 @@ public class MainDiverlotto {
 					rs.previous();
 					while (rs.next())
 				    {
-						String data = rs.getString("ESTRAZ");
-					    System.out.println("I numeri scelti non vengono estratti sulla ruota "+tabella+" dal: "+data);
+						Timestamp data_time_stamp = rs.getTimestamp("ESTRAZ");
+						String data = data_time_stamp.toString();
+					    System.out.println("I numeri scelti non vengono estratti sulla ruota "+tabella+" dal: "+data.substring(0, 10));
 				    }
 				} else {
 					System.out.println("Combinazione mai uscita!");
