@@ -1,0 +1,4 @@
+database.driver=com.mysql.jdbc.Driver
+database.edoardo.connection=jdbc:mysql://localhost:3306/Diverlotto
+database.edoardo.username=root
+database.edoardo.password=admin

@@ -5,10 +5,7 @@ package org.dstech.edoardo.diverlotto;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.sql.*;
 import java.util.Properties;
-
-
 
 /**
  * @author edoardo
@@ -27,7 +24,7 @@ public class PropertiesManagment {
 		try {
 			prop = new Properties();
 			System.out.println("Load properties...");
-			InputStream in = PropertiesManagment.class.getClassLoader().getResourceAsStream("org/dstech/edoardo/diverlotto/application.properties");
+			InputStream in = PropertiesManagment.class.getClassLoader().getResourceAsStream("resources/application.propertiesEdoardo");
 			prop.load(in);
 			in.close();
 			System.out.println("Properties has been loaded!");

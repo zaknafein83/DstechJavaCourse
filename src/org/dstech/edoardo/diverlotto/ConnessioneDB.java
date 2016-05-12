@@ -7,19 +7,19 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+
 /**
  * @author edoardo
  *
  */
-
 public class ConnessioneDB {
 	
 	/**
 	 * @param args
+	 * @return 
 	 * @throws Exceptùion
 	 */
-	public ConnessioneDB() throws Exception {
-		
+	public static void connessioneDB() throws Exception {
 		PropertiesManagment propertiesManagement = new PropertiesManagment();
 
 		Connection dbConnection = null;
@@ -42,10 +42,12 @@ public class ConnessioneDB {
 		} catch (SQLException e) {
 			throw new Exception(e.getMessage());
 		}
-		
-		
 
 	}
+
+	/**
+	 * @return
+	 */
 
 
 }
