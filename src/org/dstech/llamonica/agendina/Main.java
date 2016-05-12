@@ -17,15 +17,7 @@ public class Main {
 		Persone persone = new Persone();
         Main main=new Main();
 		Inserimento inserimento = new Inserimento();
-		// Scanner scanner=new Scanner(System.in);
-		// System.out.println("cosa vuoi fare?");
-		// System.out.println("1-Aggiungi persona");
-		// System.out.println("2-Visualizza agenda");
-		// System.out.println("3-Modifica contatto");
-		// System.out.println("4-Elimina contatto");
-		// System.out.println("5-Ricarca ordine telefono");
-		// System.out.println("6-Stampa per ordine alfabetico");
-		// System.out.println("7-Salva");
+	
 
 		for (int i = 0; i < 200; i++) {
 			Scanner scanner = new Scanner(System.in);
