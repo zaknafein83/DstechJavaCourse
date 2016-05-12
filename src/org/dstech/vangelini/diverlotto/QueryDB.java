@@ -9,8 +9,11 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 public class QueryDB {
@@ -18,7 +21,8 @@ public class QueryDB {
 	private static final String LINE = ",";
 	private static final Object INTEGER = " INTEGER NOT NULL ";
 	private static final Object KEY = " PRIMARY KEY ";
-	private static final Object VAR = " VARCHAR(10) ";
+	//private static final Object VAR = " VARCHAR(10) ";
+	private static final Object TIMESTAMP = " DATE ";
 
 	public boolean verificaRiempimentoTabella() throws Exception{
 		Connection dbConnection = null;
@@ -199,10 +203,6 @@ public class QueryDB {
 				lista_tabelle[i] = nome_tabella;
 				i++;
 		    }
-			/*for(String nome : lista_tabelle){
-				System.out.print(nome+" ");
-			}
-			System.out.println("");*/
 			return lista_tabelle;
 		} catch (SQLException e) {
 			System.err.println(e.getMessage());
@@ -228,6 +228,15 @@ public class QueryDB {
 	}	
 	
 	private static void insertSingleTableStatemente(String firstColumn, String secondColumn, String[] parameters, String nome_tabella) throws Exception {
+		try{
+		    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		    Date parsedDate = dateFormat.parse(firstColumn);
+		    Timestamp timestamp = new java.sql.Timestamp(parsedDate.getTime());
+		    firstColumn = timestamp.toString();
+		    firstColumn = firstColumn.substring(0, 10);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 		StringBuilder script = new StringBuilder("INSERT INTO ").
 				append("`").append(nome_tabella).append("`").
 				append(" VALUES ").append("(").
@@ -242,7 +251,6 @@ public class QueryDB {
 		}
 		script.append(");");
 		System.out.println(script);
-		//esegui query
 		Connection dbConnection = null;
 		Statement statement = null;
 		try {
@@ -266,7 +274,6 @@ public class QueryDB {
 		ArrayList<String> lista_tabelle = new ArrayList<String>();
 		for (int i = 5; i <= onlyTableName.length; i += 5) {
 			System.out.println("Creazione in corso di: "+onlyTableName[i-5]);
-			//prendere il nome delle tabelle
 			String nome = onlyTableName[i-5];
 			String nome_tabella = nome.substring(0, 2);
 			lista_tabelle.add(nome_tabella);
@@ -327,14 +334,12 @@ public class QueryDB {
 		StringBuilder script = new StringBuilder("CREATE TABLE IF NOT EXISTS ").
 				append("`").append(parameters[0].substring(0, 2)).append("`").append(CR).
 				append("(").append(CR).
-				append(firstColumn).append(VAR).append(LINE).append(CR).
+				append(firstColumn).append(TIMESTAMP).append(LINE).append(CR).
 				append(secondColumn).append(INTEGER).append(LINE).append(CR);
 		for (int i = 0; i < parameters.length; i++) {
 			script.append(parameters[i]).append(INTEGER).append(LINE).append(CR);
 		}
 		script.append(KEY).append("(").append(firstColumn).append("))").append(CR);
-		//System.out.println(script);
-		//eseguire query!!!
 		Connection dbConnection = null;
 		Statement statement = null;
 		try {
