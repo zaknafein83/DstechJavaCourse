@@ -8,7 +8,6 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
-import org.dstech.dbms.utility.Variabili;
 import org.dstech.fsisca.utility.PropertiesManagement;
 
 /**
